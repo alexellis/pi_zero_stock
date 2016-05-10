@@ -17,7 +17,8 @@ app.get("/stock/:store/", (req, res) => {
     if(!val) {
       res.status(202);
     } else {
-      res.json(val);
+      var stock = (val==true||val == "1");
+      res.json({"stock": stock});
     }
     res.end();
   });

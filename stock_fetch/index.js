@@ -3,60 +3,45 @@
 const Redis = require('redis');
 const request = require('request');
 
+const Pihut = require("./fetch/pihut");
+const Pimoroni = require("./fetch/pimoroni");
+
 function main() {
   const subscribe = Redis.createClient();
   const push = Redis.createClient();
+  const pihut = new Pihut();
+  const pimoroni = new Pimoroni("https://shop.pimoroni.com/collections/raspberry-pi");
 
   subscribe.on("message", (channel, message) => {
     if(channel == "stock") {
-
       if(message == "pihut") {
-        push.get("pihut.stock", (err, pihutstock)=> {
-          if(!pihutstock) {
+        push.get(message+".stock", (getStockErr, stockVal)=> {
+          if(!stockVal) {
+            pihut.refresh((refreshErr, val)=> {
+              console.log("Pihut refreshed");
 
-            const collectionUrl = "https://thepihut.com/products/raspberry-pi-zero?variant=14062715972";
-            request.get({url: collectionUrl, "User-Agent": "pi-check"}, (err, response, body) => {
-              var lines = body.split("\n");
-              lines.forEach(function(line) {
-                if(line.indexOf("product: {") >- 1) {
-                  let processLine = line.replace("product", "\"product\"").trim();
-
-                  processLine = "{" + processLine.substring(0,processLine.length-1) + "}";
-                  let parsed = JSON.parse(processLine);
-                  var found = false;
-                  parsed.product.variants.forEach(function(variant) {
-                    if(variant.inventory_quantity) {
-                      found = true;
-                    }
-                  });
-                  push.set("pihut.stock", found, (err) => {
-                    push.expire("pihut.stock", 2, (err) => {
-
-                    });
-                  });
-                }
+              push.set(message+".stock", (val? 1 : 0), (err) => {
+                push.expire(message+".stock", 5, (err) => {
+                  console.log("Stock expiring in 5 secs.");
+                });
               });
+
             });
           }
         });
       }
       else if(message == "pimoroni") {
+        push.get(message+".stock", (getStockErr, stockVal)=> {
+          if(!stockVal) {
+            pimoroni.refresh((refreshErr, val)=> {
+              console.log("pimoroni refreshed");
 
-        push.get("pimoroni.stock", (err, value) => {
-          if(!value) {
-            var collectionUrl = "https://shop.pimoroni.com/collections/raspberry-pi";
-            request.get({url: collectionUrl, "User-Agent": "pi-check"}, (err, response, body) => {
-                let stock = body.indexOf("stock-level in-stock") >=0;
-                push.set("pimoroni.stock", stock, (err) => {
-                  if(err) {
-                    return console.error(err);
-                  }
-                  push.expire("pimoroni.stock", 2, (err) => {
-                    if(err) {
-                      console.error(err);
-                    }
-                  })
+              push.set(message+".stock", (val?1:0), (err) => {
+                push.expire(message+".stock", 5, (err) => {
+                  console.log("Stock expiring in 5 secs.");
                 });
+              });
+
             });
           }
         });
