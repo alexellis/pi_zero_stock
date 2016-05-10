@@ -5,9 +5,12 @@ const express = require('express');
 const app = express();
 const Redis = require('redis');
 
+app.use(express.static("static"));
+
 app.get("/stock/:store/", (req, res) => {
   const store = req.params.store;
-  if(store != "pimoroni" && store != "pihut" && store !="pisupply") {
+  var valid = ["pimoroni", "pihut", "pisupply"];
+  if(valid.indexOf(store) == -1) {
     res.status(400);
     res.end();
   }

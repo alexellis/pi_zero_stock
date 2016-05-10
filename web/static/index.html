@@ -1,0 +1,39 @@
+<html>
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
+</head>
+<body>
+Landing page: TBD
+  <div id="main">
+    <div id="statusList">
+
+    </div>
+
+  </div>
+</body>
+<script>
+  function promiseMe(name) {
+    var load = new Promise(function(resolve, reject) {
+      $.ajax("/stock/"+name).success(function(status, val, res) {
+        if(res.status == 202) {
+          return reject(name);
+        }
+        resolve({name: name , status: status});
+      });
+    });
+    return load;
+  }
+  $("#statusList").text("Loading...");
+
+  promiseMe("pimoroni")
+  .then(function(x) {
+    $("#statusList").text("Loaded "+x.name+ " as "+ x.status.stock);
+    console.log("Loaded "+name+ " as "+ x.stock);
+  })
+  .catch(function(name) {
+    $("#statusList").text("Still loading, "+ name );
+    console.log("Please re-try "+name);
+  });
+
+</script>
+</html>
