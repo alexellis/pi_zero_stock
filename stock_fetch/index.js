@@ -29,6 +29,7 @@ function main() {
           if(!stockVal) {
             handler.refresh((refreshErr, val)=> {
               console.log(message+ " refreshed");
+              push.publish("stock.refreshed", message);
               push.set(message+".stock", (val? 1 : 0), (err) => {
                 push.expire(message+".stock", cacheSeconds, (err) => {
                   console.log("Stock expiring in "+cacheSeconds+" secs.");
