@@ -12,7 +12,7 @@ function main() {
   const pihut = new Pihut();
   const pimoroni = new Keywordfinder("https://shop.pimoroni.com/collections/raspberry-pi");
   const pisupply = new Keywordfinder("https://www.pi-supply.com/product/raspberry-pi-zero-cable-kit/");
-  const cacheSeconds = 5;
+  const cacheSeconds = 60;
 
   subscribe.on("message", (channel, message) => {
     if(channel == "stock") {

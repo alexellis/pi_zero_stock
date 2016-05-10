@@ -3,20 +3,20 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
 </head>
 <body>
-Landing page: TBD
+  <h2>Raspberry PI Zero stock</h2>
   <div id="main">
     <div id="statusList">
 
     </div>
-
   </div>
+  <p>Site under construction</p>
 </body>
 <script>
   function promiseMe(name) {
     var load = new Promise(function(resolve, reject) {
       $.ajax("/stock/"+name).success(function(status, val, res) {
         if(res.status == 202) {
-          return reject(name);
+          resolve({name: name , status: null});
         }
         resolve({name: name , status: status});
       });
@@ -25,15 +25,28 @@ Landing page: TBD
   }
   $("#statusList").text("Loading...");
 
-  promiseMe("pimoroni")
-  .then(function(x) {
-    $("#statusList").text("Loaded "+x.name+ " as "+ x.status.stock);
-    console.log("Loaded "+name+ " as "+ x.stock);
-  })
-  .catch(function(name) {
-    $("#statusList").text("Still loading, "+ name );
-    console.log("Please re-try "+name);
-  });
+  var runPromises = function() {
+    Promise.all([promiseMe("pimoroni"), promiseMe("pihut")])
+    .then(function(x) {
+      console.log(x);
+      var values = "";
+      x.forEach(function(v) {
+        if(!v.status) {
+          values+="<li> Refreshing "+v.name+"</li>\n";
+        } else {
+          values+="<li> <b>"+v.name+ "</b> "+ (v.status.stock?"in stock":"out of stock")+"</li>\n";
+        }
+      });
+      $("#statusList").html(values);
+    })
+    .catch(function(error) {
+      $("#statusList").text("Error loading: "+ error);
+    });
+  };
+  runPromises();
 
+  setInterval(function() {
+    runPromises();
+  }, 1000);
 </script>
 </html>
