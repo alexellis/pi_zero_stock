@@ -4,45 +4,36 @@ const Redis = require('redis');
 const request = require('request');
 
 const Pihut = require("./fetch/pihut");
-const Pimoroni = require("./fetch/pimoroni");
+const Keywordfinder = require("./fetch/keywordfinder");
 
 function main() {
   const subscribe = Redis.createClient();
   const push = Redis.createClient();
   const pihut = new Pihut();
-  const pimoroni = new Pimoroni("https://shop.pimoroni.com/collections/raspberry-pi");
-  const cacheSeconds = 5; //
+  const pimoroni = new Keywordfinder("https://shop.pimoroni.com/collections/raspberry-pi");
+  const pisupply = new Keywordfinder("https://www.pi-supply.com/product/raspberry-pi-zero-cable-kit/");
+  const cacheSeconds = 5;
 
   subscribe.on("message", (channel, message) => {
     if(channel == "stock") {
-      if(message == "pihut") {
-        push.get(message+".stock", (getStockErr, stockVal)=> {
-          if(!stockVal) {
-            pihut.refresh((refreshErr, val)=> {
-              console.log("Pihut refreshed");
+      var mappings= {
+        "pihut" : pihut,
+        "pisupply": pisupply,
+        "pimoroni": pimoroni
+      };
 
+      if(Object.keys(mappings).indexOf(message) > -1) {
+        var handler = mappings[message];
+
+        push.get(message + ".stock", (getStockErr, stockVal) => {
+          if(!stockVal) {
+            handler.refresh((refreshErr, val)=> {
+              console.log(message+ " refreshed");
               push.set(message+".stock", (val? 1 : 0), (err) => {
                 push.expire(message+".stock", cacheSeconds, (err) => {
                   console.log("Stock expiring in "+cacheSeconds+" secs.");
                 });
               });
-
-            });
-          }
-        });
-      }
-      else if(message == "pimoroni") {
-        push.get(message+".stock", (getStockErr, stockVal)=> {
-          if(!stockVal) {
-            pimoroni.refresh((refreshErr, val)=> {
-              console.log("pimoroni refreshed");
-
-              push.set(message+".stock", (val?1:0), (err) => {
-                push.expire(message+".stock", cacheSeconds, (err) => {
-                  console.log("Stock expiring in "+cacheSeconds+" secs.");
-                });
-              });
-
             });
           }
         });

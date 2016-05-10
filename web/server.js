@@ -7,7 +7,7 @@ const Redis = require('redis');
 
 app.get("/stock/:store/", (req, res) => {
   const store = req.params.store;
-  if(store != "pimoroni" && store != "pihut") {
+  if(store != "pimoroni" && store != "pihut" && store !="pisupply") {
     res.status(400);
     res.end();
   }
