@@ -25,3 +25,9 @@ curl http://localhost:3000/stock/pihut/
 
 * 200 is given if cache is valid and the stock will be returned as true or false.
 * 202 means the check was in progress, send the request again.
+
+#### Viewing in web-browser
+
+Access the following:
+
+http://localhost:3000/
