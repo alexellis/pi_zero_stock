@@ -11,6 +11,7 @@ function main() {
   const push = Redis.createClient();
   const pihut = new Pihut();
   const pimoroni = new Pimoroni("https://shop.pimoroni.com/collections/raspberry-pi");
+  const cacheSeconds = 5; //
 
   subscribe.on("message", (channel, message) => {
     if(channel == "stock") {
@@ -21,8 +22,8 @@ function main() {
               console.log("Pihut refreshed");
 
               push.set(message+".stock", (val? 1 : 0), (err) => {
-                push.expire(message+".stock", 5, (err) => {
-                  console.log("Stock expiring in 5 secs.");
+                push.expire(message+".stock", cacheSeconds, (err) => {
+                  console.log("Stock expiring in "+cacheSeconds+" secs.");
                 });
               });
 
@@ -37,8 +38,8 @@ function main() {
               console.log("pimoroni refreshed");
 
               push.set(message+".stock", (val?1:0), (err) => {
-                push.expire(message+".stock", 5, (err) => {
-                  console.log("Stock expiring in 5 secs.");
+                push.expire(message+".stock", cacheSeconds, (err) => {
+                  console.log("Stock expiring in "+cacheSeconds+" secs.");
                 });
               });
 
