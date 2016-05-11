@@ -10,7 +10,7 @@ function main() {
   const subscribe = Redis.createClient();
   const push = Redis.createClient();
   const pihut = new Pihut();
-  const pimoroni = new Keywordfinder("https://shop.pimoroni.com/collections/raspberry-pi");
+  const pimoroni = new Keywordfinder("https://shop.pimoroni.com/products/raspberry-pi-zero");
   const pisupply = new Keywordfinder("https://www.pi-supply.com/product/raspberry-pi-zero-cable-kit/");
   const cacheMs = 10000;
   const cacheRefreshLockMs = 5000;
