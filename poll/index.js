@@ -46,7 +46,7 @@ q.drain = function() {
       retry.forEach(function(retryItem) {
         q.push(retryItem);
       })
-    },2000);
+    }, 2000);
   }
   else {
     Object.keys(results).forEach(function(resultKey) {

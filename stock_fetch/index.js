@@ -12,27 +12,46 @@ function main() {
   const pihut = new Pihut();
   const pimoroni = new Keywordfinder("https://shop.pimoroni.com/collections/raspberry-pi");
   const pisupply = new Keywordfinder("https://www.pi-supply.com/product/raspberry-pi-zero-cable-kit/");
-  const cacheSeconds = 60;
+  const cacheMs = 10000;
+  const cacheRefreshLockMs = 5000;
+  const ifNotExists = "NX";
+  const expire = "PX";
+
+  var mappings = {
+    "pihut" : pihut,
+    "pisupply": pisupply,
+    "pimoroni": pimoroni
+  };
+
+  function getMapping(message) {
+    var ret;
+    if(Object.keys(mappings).indexOf(message) > -1) {
+      ret = mappings[message];
+    }
+    return ret;
+  }
 
   subscribe.on("message", (channel, message) => {
     if(channel == "stock") {
-      var mappings= {
-        "pihut" : pihut,
-        "pisupply": pisupply,
-        "pimoroni": pimoroni
-      };
-
-      if(Object.keys(mappings).indexOf(message) > -1) {
-        var handler = mappings[message];
-
+      var handler = getMapping(message);
+      if(handler) {
         push.get(message + ".stock", (getStockErr, stockVal) => {
           if(!stockVal) {
-            handler.refresh((refreshErr, val)=> {
-              console.log(message+ " refreshed");
-              push.publish("stock.refreshed", message);
-              push.set(message+".stock", (val? 1 : 0), (err) => {
-                push.expire(message+".stock", cacheSeconds, (err) => {
-                  console.log("Stock expiring in "+cacheSeconds+" secs.");
+
+            push.get(message + ".stock.fetching", (getfetchingErr, fetching) => {
+              console.log(message + ".stock.fetching", fetching);
+              if(fetching) {
+                return;
+              }
+
+              console.log("Firing check to " + message);
+              push.set(message + ".stock.fetching", true, ifNotExists, expire, cacheRefreshLockMs, (setFetchingErr) => {
+                handler.refresh((refreshErr, val) => {
+                  console.log(message+ " refreshed");
+                  push.set(message+".stock", (val? 1 : 0), ifNotExists, expire, cacheMs, (err) => {
+
+                      push.publish("stock.refreshed", message);
+                  });
                 });
               });
             });
