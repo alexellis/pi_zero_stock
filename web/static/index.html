@@ -26,11 +26,11 @@
   $("#statusList").text("Loading...");
 
   var runPromises = function() {
-    Promise.all([promiseMe("pimoroni"), promiseMe("pihut")])
-    .then(function(x) {
-      console.log(x);
+    Promise.all([promiseMe("pimoroni"), promiseMe("pihut"), promiseMe("pisupply s")])
+    .then(function(results) {
+      console.log(results);
       var values = "";
-      x.forEach(function(v) {
+      results.forEach(function(v) {
         if(!v.status) {
           values+="<li> Refreshing "+v.name+"</li>\n";
         } else {
