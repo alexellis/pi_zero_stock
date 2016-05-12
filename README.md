@@ -18,6 +18,8 @@ $ docker-compose up -d
 * Start `redis-server`
 * `npm start` in both folders.
 
+Set up a hosts entry in /etc/hosts for redis to localhost, or set the environmental variable 'REDIS' to localhost before starting any of the nodes processes.
+
 #### Supported endpoints:
 
 I've implemented endpoints for the following UK stores:
@@ -52,8 +54,11 @@ http://localhost:3000/
 
 #### Todo:
 
+```
+[x] Must have - hardening for failures during scrape
 [ ] Should have - Switch to pm2 for the node processes
 [ ] Should have - coloured bootstrap wells or pills for in/out of stock.
 [ ] Could have - web hooks (posting to Twitter)
 [ ] Could have - show stock for other suppliers.
+```
 
