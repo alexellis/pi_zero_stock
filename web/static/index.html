@@ -11,54 +11,19 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="home.js"></script>
 </head>
 <body>
   <div class="container">
     <h2>Raspberry PI Zero stock</h2>
     <div id="main">
-      <div id="statusList">
+      <div id="status">
+        <ul id="statusList" class="list-group">
+
+        </ul>
 
       </div>
     </div>
-    <p>Site under construction</p>
 </div>
 </body>
-<script>
-  function promiseMe(name) {
-    var load = new Promise(function(resolve, reject) {
-      $.ajax("/stock/"+name).success(function(status, val, res) {
-        if(res.status == 202) {
-          resolve({name: name , status: null});
-        }
-        resolve({name: name , status: status});
-      });
-    });
-    return load;
-  }
-  $("#statusList").text("Loading...");
-
-  var runPromises = function() {
-    Promise.all([promiseMe("pimoroni"), promiseMe("pihut"), promiseMe("pisupply")])
-    .then(function(results) {
-      console.log(results);
-      var values = "";
-      results.forEach(function(v) {
-        if(!v.status) {
-          values+="<li> Refreshing "+v.name+"</li>\n";
-        } else {
-          values+="<li> <b>"+v.name+ "</b> "+ (v.status.stock?"in stock":"out of stock")+"</li>\n";
-        }
-      });
-      $("#statusList").html(values);
-    })
-    .catch(function(error) {
-      $("#statusList").text("Error loading: "+ error);
-    });
-  };
-  runPromises();
-
-  setInterval(function() {
-    runPromises();
-  }, 1000);
-</script>
 </html>
