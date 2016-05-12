@@ -56,6 +56,7 @@ http://localhost:3000/
 
 ```
 [x] Must have - hardening for failures during scrape
+[ ] Should have - (Static site) Angular 1.x (via CDN) for binding stock results. 
 [ ] Should have - Switch to pm2 for the node processes
 [ ] Should have - coloured bootstrap wells or pills for in/out of stock.
 [ ] Could have - web hooks (posting to Twitter)
