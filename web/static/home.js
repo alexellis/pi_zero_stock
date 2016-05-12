@@ -9,7 +9,14 @@ function promiseMe(name) {
   });
   return load;
 }
+
 $("#statusList").text("Loading...");
+
+var storeMappings = {
+  "pimoroni": "https://shop.pimoroni.com/products/raspberry-pi-zero",
+  "pihut": "https://thepihut.com/products/raspberry-pi-zero?variant=14062715972",
+  "pisupply": "https://www.pi-supply.com/product/raspberry-pi-zero-cable-kit/"
+};
 
 var runPromises = function() {
   Promise.all([promiseMe("pimoroni"), promiseMe("pihut"), promiseMe("pisupply")])
@@ -20,7 +27,10 @@ var runPromises = function() {
       if(!v.status) {
         values+="<li class=\"list-group-item\"> Refreshing "+v.name+"</li>\n";
       } else {
-        values+="<li class=\"list-group-item\"> <b>"+v.name+ "</b> "+ (v.status.stock?"in stock":"out of stock")+"</li>\n";
+        var newli="<li class=\"list-group-item\"> <b>";
+        newli += "<a href=\"" + storeMappings[v.name] + "\" target=\"_blank\">"+v.name+"</a>";
+        newli += "</b> "+ (v.status.stock?"in stock":"out of stock")+"</li>\n";
+        values += newli;
       }
     });
     $("#statusList").html(values);
@@ -34,3 +44,5 @@ runPromises();
 setInterval(function() {
   runPromises();
 }, 1000);
+
+

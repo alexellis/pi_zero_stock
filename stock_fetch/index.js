@@ -49,8 +49,7 @@ function main() {
                 handler.refresh((refreshErr, val) => {
                   console.log(message+ " refreshed");
                   push.set(message+".stock", (val? 1 : 0), ifNotExists, expire, cacheMs, (err) => {
-
-                      push.publish("stock.refreshed", message);
+                    push.publish("stock.refreshed", message);
                   });
                 });
               });
@@ -64,3 +63,4 @@ function main() {
 }
 
 main();
+

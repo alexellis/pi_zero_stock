@@ -10,8 +10,14 @@ module.exports = class Keywordfinder {
 
   refresh(done) {
     request.get({url: this.productPage, "User-Agent": "pi-check"}, (err, response, body) => {
-        let stock = body.indexOf(this.keyword) >=0;
-        done(err, stock);
+      let stock = false;
+      try {
+        stock = body.indexOf(this.keyword) >=0;
+      } catch(e) {
+        console.error(e);
+      }
+      done(err, stock);
     });
   }
 }
+
