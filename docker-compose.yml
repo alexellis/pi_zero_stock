@@ -1,0 +1,11 @@
+version: "2.0"
+services:
+  web:
+    build: ./web/
+    ports:
+     - "3000:3000"
+  stock_fetch:
+    build: ./stock_fetch/
+  redis:
+    image: redis
+

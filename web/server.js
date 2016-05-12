@@ -27,7 +27,7 @@ app.get("/stock/:store/", (req, res) => {
   });
 });
 
-const pull = Redis.createClient();
+const pull = Redis.createClient({host: process.env.REDIS||"redis"});
 
 const port = process.env.PORT || 3000;
 app.listen(port, function() {
