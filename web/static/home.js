@@ -36,7 +36,11 @@ var runPromises = function() {
 
         var newli = "<li class=\""+classes+"\"> <b>";
         newli += "<a href=\"" + storeMappings[v.name] + "\" target=\"_blank\">"+v.name+"</a>";
-        newli += "</b> "+ (v.status.stock ? "in stock" : "out of stock")+"</li>\n";
+        newli += "</b> "+ (v.status.stock ? "in stock" : "out of stock")+"\n";
+        if(v.status.totalAmount) {
+           newli += " <span class=\"badge\">" + v.status.totalAmount + " units</span>";
+        }
+        newli += "</li>\n";
         values += newli;
       }
     });

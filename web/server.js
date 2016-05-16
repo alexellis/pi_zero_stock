@@ -19,11 +19,20 @@ app.get("/stock/:store/", (req, res) => {
   pull.get(store + ".stock", (err, val) => {
     if(!val) {
       res.status(202);
-    } else {
-      var stock = (val==true||val == "1");
-      res.json({"stock": stock});
+      res.end();
     }
-    res.end();
+    else
+    {
+      pull.get(store + ".totalAmount", (err, amt) => {
+         var stock = (val==true||val == "1");
+         var ret = {"stock": stock};
+         if(amt) {
+            ret.totalAmount = Number(amt);
+         }
+         res.json(ret);
+         res.end();
+      });
+    }
   });
 });
 
