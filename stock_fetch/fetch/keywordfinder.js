@@ -16,7 +16,7 @@ module.exports = class Keywordfinder {
       } catch(e) {
         console.error(e);
       }
-      done(err, stock);
+      done(err, {stock: stock});
     });
   }
 }

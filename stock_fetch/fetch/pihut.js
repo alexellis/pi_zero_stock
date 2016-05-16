@@ -9,7 +9,9 @@ module.exports = class Pimoroni {
   }
 
   _process(response, body) {
+    var ret = {};
     var found = false;
+    var totalAmount = 0;
     try {
       var lines = body.split("\n");
 
@@ -18,10 +20,10 @@ module.exports = class Pimoroni {
           let processLine = line.replace("product", "\"product\"").trim();
           processLine = "{" + processLine.substring(0,processLine.length-1) + "}";
           let parsed = JSON.parse(processLine);
-
           parsed.product.variants.forEach(function(variant) {
             if(variant.inventory_quantity) {
               found = true;
+              totalAmount+=Number(variant.inventory_quantity);
             }
           });
         }
@@ -29,7 +31,7 @@ module.exports = class Pimoroni {
     } catch(e) {
       console.error(e);
     }
-    return found;
+    return {stock: found, totalAmount: totalAmount};
   }
 
   refresh(done) {

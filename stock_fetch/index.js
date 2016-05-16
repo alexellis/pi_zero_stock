@@ -48,7 +48,12 @@ function main() {
               push.set(message + ".stock.fetching", true, ifNotExists, expire, cacheRefreshLockMs, (setFetchingErr) => {
                 handler.refresh((refreshErr, val) => {
                   console.log(message+ " refreshed");
-                  push.set(message+".stock", (val? 1 : 0), ifNotExists, expire, cacheMs, (err) => {
+                  push.set(message+".stock", (val.stock ? 1 : 0), ifNotExists, expire, cacheMs, (err) => {
+                    if(val.totalAmount) {
+                       push.set(message+".totalAmount", val.totalAmount, ifNotExists, expire, cacheMs, (err) => {
+
+                       });
+                    }
                     push.publish("stock.refreshed", message);
                   });
                 });
