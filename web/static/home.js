@@ -14,12 +14,14 @@ $("#statusList").text("Loading...");
 
 var storeMappings = {
   "pimoroni": "https://shop.pimoroni.com/products/raspberry-pi-zero",
-  "pihut": "https://thepihut.com/products/raspberry-pi-zero?variant=14062715972",
-  "pisupply": "https://www.pi-supply.com/product/raspberry-pi-zero-cable-kit/"
+  "pihut": "https://thepihut.com/products/raspberry-pi-zero?variant=14062715972"
 };
+//  "pisupply": "https://www.pi-supply.com/product/raspberry-pi-zero-cable-kit/"
 
 var runPromises = function() {
-  Promise.all([promiseMe("pimoroni"), promiseMe("pihut"), promiseMe("pisupply")])
+  var promises = [promiseMe("pimoroni"), promiseMe("pihut")];
+//  var promises = [promiseMe("pimoroni"), promiseMe("pihut"), promiseMe("pisupply")];
+  Promise.all(promises)
   .then(function(results) {
     console.log(results);
     var values = "";
