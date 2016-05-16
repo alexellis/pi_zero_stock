@@ -25,11 +25,18 @@ var runPromises = function() {
     var values = "";
     results.forEach(function(v) {
       if(!v.status) {
-        values+="<li class=\"list-group-item\"> Refreshing "+v.name+"</li>\n";
+        values+="<li class=\"list-group-item list-group-item-warning\"> Refreshing "+v.name+"</li>\n";
       } else {
-        var newli="<li class=\"list-group-item\"> <b>";
+        var classes = "list-group-item";
+        if(v.status.stock) {
+          classes += " list-group-item-success";
+        } else {
+          classes += " list-group-item-danger";
+        }
+
+        var newli = "<li class=\""+classes+"\"> <b>";
         newli += "<a href=\"" + storeMappings[v.name] + "\" target=\"_blank\">"+v.name+"</a>";
-        newli += "</b> "+ (v.status.stock?"in stock":"out of stock")+"</li>\n";
+        newli += "</b> "+ (v.status.stock ? "in stock" : "out of stock")+"</li>\n";
         values += newli;
       }
     });
@@ -44,5 +51,6 @@ runPromises();
 setInterval(function() {
   runPromises();
 }, 1000);
+
 
 
