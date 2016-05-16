@@ -4,13 +4,14 @@ const Redis = require('redis');
 const request = require('request');
 
 const Pihut = require("./fetch/pihut");
+const Pimoroni = require("./fetch/pimoroni");
 const Keywordfinder = require("./fetch/keywordfinder");
 
 function main() {
   const subscribe = Redis.createClient({host: process.env.REDIS||"redis"});
   const push = Redis.createClient({host: process.env.REDIS||"redis"});
   const pihut = new Pihut();
-  const pimoroni = new Keywordfinder("https://shop.pimoroni.com/products/raspberry-pi-zero");
+  const pimoroni = new Pimoroni();
   const pisupply = new Keywordfinder("https://www.pi-supply.com/product/raspberry-pi-zero-cable-kit/");
   const cacheMs = 60000;
   const cacheRefreshLockMs = 5000;
