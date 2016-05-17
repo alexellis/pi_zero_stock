@@ -13,7 +13,7 @@ function promiseMe(name) {
 $("#statusList").text("Loading...");
 
 var storeMappings = {
-  "pimoroni": "https://shop.pimoroni.com/products/raspberry-pi-zero",
+  "pimoroni": "https://shop.pimoroni.com/collections/pi-zero",
   "pihut": "https://thepihut.com/products/raspberry-pi-zero?variant=14062715972"
 };
 //  "pisupply": "https://www.pi-supply.com/product/raspberry-pi-zero-cable-kit/"
