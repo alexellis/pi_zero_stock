@@ -61,9 +61,10 @@ http://localhost:3000/
 
 ```
 [x] Must have - hardening for failures during scrape
+[x] Should have - total stock numbers for any Raspberry PI bundles/products by store.
 [ ] Should have - (Static site) Angular 1.x (via CDN) for binding stock results. 
 [ ] Should have - Switch to pm2 for the node processes
-[ ] Should have - coloured bootstrap wells or pills for in/out of stock.
+[x] Should have - coloured bootstrap wells or pills for in/out of stock.
 [ ] Could have - web hooks (posting to Twitter)
 [ ] Could have - show stock for other suppliers.
 [ ] Could have - show stock units for individual SKUs, rather than (or in addition to) just one total-per-shop
