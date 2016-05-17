@@ -2,7 +2,7 @@
 
 var request = require('request');
 
-module.exports = class Pimoroni {
+module.exports = class Pihut {
 
   constructor() {
 
