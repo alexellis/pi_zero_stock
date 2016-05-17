@@ -22,8 +22,10 @@ module.exports = class Pihut {
           let parsed = JSON.parse(processLine);
           parsed.product.variants.forEach(function(variant) {
             if(variant.inventory_quantity) {
-              found = true;
-              totalAmount+=Number(variant.inventory_quantity);
+              let value = Number(variant.inventory_quantity);
+              if(value > 0) {
+                 totalAmount = 0;
+              }
             }
           });
         }
@@ -31,7 +33,7 @@ module.exports = class Pihut {
     } catch(e) {
       console.error(e);
     }
-    return {stock: found, totalAmount: totalAmount};
+    return {stock: totalAmount > 0, totalAmount: totalAmount};
   }
 
   refresh(done) {
