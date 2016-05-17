@@ -9,15 +9,18 @@ app.use(express.static("static"));
 
 app.get("/stock/:store/", (req, res) => {
   const store = req.params.store;
-  var valid = ["pimoroni", "pihut", "pisupply"];
+  var valid = ["pimoroni", "pihut"];
+//, "pisupply"];
+
   if(valid.indexOf(store) == -1) {
     res.status(400);
-    res.end();
+    return res.end();
   }
 
-  pull.publish("stock", store);
   pull.get(store + ".stock", (err, val) => {
     if(!val) {
+      pull.publish("stock", store);
+
       res.status(202);
       res.end();
     }

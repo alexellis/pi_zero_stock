@@ -23,7 +23,7 @@ var runPromises = function() {
 //  var promises = [promiseMe("pimoroni"), promiseMe("pihut"), promiseMe("pisupply")];
   Promise.all(promises)
   .then(function(results) {
-    console.log(results);
+
     var values = "";
     results.forEach(function(v) {
       if(!v.status) {
@@ -56,7 +56,4 @@ runPromises();
 
 setInterval(function() {
   runPromises();
-}, 1000);
-
-
-
+}, 1500);
