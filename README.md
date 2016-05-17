@@ -2,6 +2,11 @@
 
 A high-speed, cached stock checker for the Raspberry PI Zero through screen-scraping.
 
+#### See also:
+
+* Live site deployed at: [stockalert.alexellis.io](http://stockalert.alexellis.io/)
+* [Blog entry on how it was made](http://blog.alexellis.io/rapid-prototype-docker-compose/)
+
 #### Installation (easy way)
 
 Using latest version of Docker and docker-compose:
