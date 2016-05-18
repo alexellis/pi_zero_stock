@@ -8,18 +8,22 @@ const Pimoroni = require("./fetch/pimoroni");
 const Keywordfinder = require("./fetch/keywordfinder");
 
 function main() {
+  const modules = {"request": request};
+
   const subscribe = Redis.createClient({host: process.env.REDIS||"redis"});
   const push = Redis.createClient({host: process.env.REDIS||"redis"});
-  const pihut = new Pihut();
-  const pimoroni = new Pimoroni();
-  const pisupply = new Keywordfinder("https://www.pi-supply.com/product/raspberry-pi-zero-cable-kit/");
+
+  const pihut = new Pihut(modules);
+  const pimoroni = new Pimoroni(modules);
+  const pisupply = new Keywordfinder(modules,"https://www.pi-supply.com/product/raspberry-pi-zero-cable-kit/");
+
   const cacheMs = 60000;
   const cacheRefreshLockMs = 5000;
   const ifNotExists = "NX";
   const expire = "PX";
 
   var mappings = {
-    "pihut" : pihut,
+    "pihut": pihut,
     "pisupply": pisupply,
     "pimoroni": pimoroni
   };

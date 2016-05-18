@@ -1,11 +1,9 @@
 "use strict"
 
-var request = require('request');
-
 module.exports = class Pihut {
 
-  constructor() {
-
+  constructor(modules) {
+    this.modules = modules;
   }
 
   _process(response, body) {
@@ -20,11 +18,12 @@ module.exports = class Pihut {
           let processLine = line.replace("product", "\"product\"").trim();
           processLine = "{" + processLine.substring(0,processLine.length-1) + "}";
           let parsed = JSON.parse(processLine);
+
           parsed.product.variants.forEach(function(variant) {
             if(variant.inventory_quantity) {
               let value = Number(variant.inventory_quantity);
               if(value > 0) {
-                 totalAmount = 0;
+                 totalAmount = value;
               }
             }
           });
@@ -38,7 +37,7 @@ module.exports = class Pihut {
 
   refresh(done) {
     const collectionUrl = "https://thepihut.com/products/raspberry-pi-zero?variant=14062715972";
-    request.get({url: collectionUrl, "User-Agent": "pi-check"}, (err, response, body) => {
+    this.modules.request.get({url: collectionUrl, "User-Agent": "pi-check"}, (err, response, body) => {
       if(err) {
         console.error(err);
         return done(err, false);

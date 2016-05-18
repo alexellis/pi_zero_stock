@@ -1,15 +1,14 @@
 "use strict"
 
-var request = require('request');
-
 class PimoroniScrape {
-  constructor() {
+  constructor(modules) {
+    this.modules = modules;
     this.productPage = "https://shop.pimoroni.com/products/raspberry-pi-zero.js";
   }
 
   _pullCounts(url) {
     return new Promise((resolve, reject) => {
-      request.get({url: url, "User-Agent": "pi-check", "json": true}, (err, response, body) => {
+      this.modules.request.get({url: url, "User-Agent": "pi-check", "json": true}, (err, response, body) => {
         let total = 0;
         try {
           body.variants.forEach((v) => {
@@ -44,4 +43,5 @@ class PimoroniScrape {
     });
   }
 }
+
 module.exports = PimoroniScrape;
