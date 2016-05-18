@@ -18,11 +18,12 @@ module.exports = class Pihut {
           let processLine = line.replace("product", "\"product\"").trim();
           processLine = "{" + processLine.substring(0,processLine.length-1) + "}";
           let parsed = JSON.parse(processLine);
+
           parsed.product.variants.forEach(function(variant) {
             if(variant.inventory_quantity) {
               let value = Number(variant.inventory_quantity);
               if(value > 0) {
-                 totalAmount = 0;
+                 totalAmount = value;
               }
             }
           });
