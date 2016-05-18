@@ -8,10 +8,12 @@ const KeywordFinder = require('../fetch/keywordFinder');
 describe("keywordFinderTests", () => {
   var sandbox;
   var request;
+  
   before(() => { 
     sandbox = sinon.sandbox.create();
     request = { get: sinon.stub() };
   });
+  
   it("finds got an error on HTTP request", (done) => {
       request.get.yields("some error", {}, "");
 
@@ -22,6 +24,7 @@ describe("keywordFinderTests", () => {
         done();
       });   
   });
+  
   it("finds the keyword", (done) => {
       request.get.yields(null, {}, "<div class=\"stock-level in-stock\">Item in stock</div>");
       let finder = new KeywordFinder({request: request},  "http://webpage/");
@@ -32,7 +35,8 @@ describe("keywordFinderTests", () => {
         done();
       });   
   });
-it("cannot find the keyword", (done) => {
+  
+  it("cannot find the keyword", (done) => {
       request.get.yields(null, {}, "<div class=\"stock-level no-stock\">Item not in stock</div>");
       let finder = new KeywordFinder({request: request},  "http://webpage/");
       finder.refresh((err, stock) => {
@@ -40,5 +44,5 @@ it("cannot find the keyword", (done) => {
         expect(stock.stock).to.equal(false);
         done();
       });   
-  })
+  });
 });
