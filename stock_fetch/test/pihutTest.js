@@ -29,6 +29,19 @@ describe("pihutTests", () => {
       });   
   });
 
+  it("gets a HTTP error, gives no stock", (done) => {
+
+      request.get.yields("error", {}, null);
+      let finder = new Pihut({request: request},  "http://webpage/");
+
+      finder.refresh((err, stock) => {
+        expect(err).to.exist;
+        // expect(stock).to.exist;
+        // expect(stock.stock).to.equal(false);
+        done();
+      });   
+  });
+
   it("cannot find any stock", (done) => {
     
       let html = "product: {  },";
