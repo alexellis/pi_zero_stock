@@ -1,11 +1,9 @@
 "use strict"
 
-var request = require('request');
-
 module.exports = class Pihut {
 
-  constructor() {
-
+  constructor(modules) {
+    modules.modules=modules;
   }
 
   _process(response, body) {
