@@ -2,7 +2,7 @@
 
 class PimoroniScrape {
   constructor() {
-    modules.modules=modules;
+    this.modules = modules;
     this.productPage = "https://shop.pimoroni.com/products/raspberry-pi-zero.js";
   }
 

@@ -3,7 +3,7 @@
 module.exports = class Pihut {
 
   constructor(modules) {
-    modules.modules=modules;
+    this.modules = modules;
   }
 
   _process(response, body) {
@@ -36,7 +36,7 @@ module.exports = class Pihut {
 
   refresh(done) {
     const collectionUrl = "https://thepihut.com/products/raspberry-pi-zero?variant=14062715972";
-    request.get({url: collectionUrl, "User-Agent": "pi-check"}, (err, response, body) => {
+    this.modules.request.get({url: collectionUrl, "User-Agent": "pi-check"}, (err, response, body) => {
       if(err) {
         console.error(err);
         return done(err, false);
