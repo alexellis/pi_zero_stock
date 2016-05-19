@@ -3,7 +3,6 @@
 class PimoroniScrape {
   constructor(modules) {
     this.modules = modules;
-    this.productPage = "https://shop.pimoroni.com/products/raspberry-pi-zero.js";
   }
 
   _pullCounts(url) {
@@ -14,7 +13,7 @@ class PimoroniScrape {
           body.variants.forEach((v) => {
              if(v.inventory_quantity) {
                let val = Number(v.inventory_quantity);
-               if(val > 0) {
+               if(val > 0 && v.price > 0) {
                   total += val;
                }
              }
@@ -32,7 +31,7 @@ class PimoroniScrape {
     var stock = {};
     var total = 0;
     Promise.all([
-      this._pullCounts(this.productPage ),
+      this._pullCounts("https://shop.pimoroni.com/products/raspberry-pi-zero.js"),
       this._pullCounts("https://shop.pimoroni.com/products/pi-zero-complete-starter-kit.js"),
       this._pullCounts("https://shop.pimoroni.com/products/pi-zero-project-kits.js")
     ]).then((results) => {
