@@ -17,17 +17,17 @@ describe("pimoroni scraper tests", () => {
     sandbox.reset();
   });
 
-  // it("gets a HTTP error, gives no stock", (done) => {
-  //
-  //     request.get.yields("error", {}, null);
-  //     let finder = new Pimoroni({request: request});
-  //
-  //     finder.refresh((err, stock) => {
-  //       expect(stock).to.exist;
-  //       expect(stock.stock).to.equal(false);
-  //       done();
-  //     });
-  // });
+  it("gets a HTTP error, gives no stock", (done) => {
+
+      request.get.yields("error", {}, null);
+      let finder = new Pimoroni({request: request});
+
+      finder.refresh((err, stock) => {
+        expect(stock).to.exist;
+        expect(stock.stock).to.equal(false);
+        done();
+      });
+  });
 
   it("finds product quantity", (done) => {
 
