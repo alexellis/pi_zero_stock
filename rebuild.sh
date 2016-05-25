@@ -1,5 +1,4 @@
 #!/bin/bash
 
-docker-compose stop
-docker-compose rm --force
+docker-compose down
 docker-compose up -d --build
