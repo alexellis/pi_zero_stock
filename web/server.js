@@ -9,7 +9,7 @@ app.use(express.static("static"));
 
 app.get("/stock/:store/", (req, res) => {
   const store = req.params.store;
-  var valid = ["pimoroni", "pihut"];
+  var valid = ["pimoroni", "pihut", "adafruit"];
 //, "pisupply"];
 
   if(valid.indexOf(store) == -1) {
