@@ -11,14 +11,16 @@ class PimoroniScrape {
       this.modules.request.get({url: url, "User-Agent": "pi-check", "json": true}, (err, response, body) => {
         let total = 0;
         try {
-          body.variants.forEach((v) => {
-             if(v.inventory_quantity) {
-               let val = Number(v.inventory_quantity);
-               if(val > 0 && v.price > 0) {
-                  total += val;
+          if(body && body.variants) {
+            body.variants.forEach((v) => {
+               if(v.inventory_quantity) {
+                 let val = Number(v.inventory_quantity);
+                 if(val > 0 && v.price > 0) {
+                    total += val;
+                 }
                }
-             }
-          });
+            });
+          }
         } catch(e) {
           console.error(e);
           resolve(0);
@@ -40,7 +42,7 @@ class PimoroniScrape {
     urls.forEach((url)=> {
       promises.push(this._pullCounts(url));
     });
- 
+
     Promise.all(promises)
     .then((results) => {
 
