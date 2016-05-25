@@ -1,52 +1,57 @@
 "use strict"
 
-module.exports = class Pihut {
-
+class Pihut {
   constructor(modules) {
     this.modules = modules;
   }
 
-  _process(response, body) {
-    var ret = {};
-    var found = false;
-    var totalAmount = 0;
-    try {
-      var lines = body.split("\n");
+  _pullCounts(url) {
 
-      lines.forEach(function(line) {
-        if(line.indexOf("product: {") >- 1) {
-          let processLine = line.replace("product", "\"product\"").trim();
-          processLine = "{" + processLine.substring(0,processLine.length-1) + "}";
-          
-          let parsed = JSON.parse(processLine);
-          
-          if(parsed && parsed.product && parsed.product.variants) {
-            parsed.product.variants.forEach(function(variant) {
-              if(variant.inventory_quantity) {
-                let value = Number(variant.inventory_quantity);
-                totalAmount = (value > 0) ? value : 0;
-              }
-            });
-          }
+    return new Promise((resolve, reject) => {
+      this.modules.request.get({url: url, "User-Agent": "pi-check", "json": true}, (err, response, body) => {
+        let total = 0;
+        try {
+          body.variants.forEach((v) => {
+             if(v.inventory_quantity) {
+               let val = Number(v.inventory_quantity);
+               if(val > 0 && v.price > 0) {
+                  total += val;
+               }
+             }
+          });
+        } catch(e) {
+          console.error(e);
+          resolve(0);
         }
+        resolve(total);
       });
-    } catch(e) {
-      console.error(e);
-    }
-    return {stock: totalAmount > 0, totalAmount: totalAmount};
+    });
   }
 
   refresh(done) {
-    const collectionUrl = "https://thepihut.com/products/raspberry-pi-zero?variant=14062715972";
-    this.modules.request.get({url: collectionUrl, "User-Agent": "pi-check"}, (err, response, body) => {
-      if(err) {
-        console.error(err);
-        return done(err);
-      }
+    var stock = {};
+    var total = 0;
+    var urls = [
+      "https://thepihut.com/products/raspberry-pi-zero.js"
+    ];
+    var promises = [];
+    urls.forEach((url)=> {
+      promises.push(this._pullCounts(url));
+    });
 
-      var found = this._process(response, body);
-      done(err, found);
+    Promise.all(promises)
+    .then((results) => {
+
+      results.forEach((r)=> {
+        total+=r;
+      });
+      done(null, {stock: total>0, totalAmount: total});
+    })
+    .catch((e) => {
+      console.error(e);
+      done(null, {stock: total>0, totalAmount: total});
     });
   }
 }
 
+module.exports = Pihut;
