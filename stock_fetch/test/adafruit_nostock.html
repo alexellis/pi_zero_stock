@@ -1,0 +1,2012 @@
+
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+<meta name="globalsign-domain-verification" content="395EvTKgTnwb20iKcV68nItcl7lbY_JFqavc5s-uhP"/>
+<meta charset="utf-8"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"UQUGWV5XGwAIV1RVAwA="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o||e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(t,e,n){function r(t){try{s.console&&console.log(t)}catch(e){}}var o,i=t("ee"),a=t(14),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,-1!==o.indexOf("dev")&&(s.dev=!0),-1!==o.indexOf("nr_dev")&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,e,n){r(n.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,e){return t}).join(", ")))},{}],2:[function(t,e,n){function r(t,e,n,r,o){try{d?d-=1:i("err",[o||new UncaughtException(t,e,n)])}catch(s){try{i("ierr",[s,(new Date).getTime(),!0])}catch(c){}}return"function"==typeof f?f.apply(this,a(arguments)):!1}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function o(t){i("err",[t,(new Date).getTime()])}var i=t("handle"),a=t(15),s=t("ee"),c=t("loader"),f=window.onerror,u=!1,d=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(l){"stack"in l&&(t(8),t(7),"addEventListener"in window&&t(5),c.xhrWrappable&&t(9),u=!0)}s.on("fn-start",function(t,e,n){u&&(d+=1)}),s.on("fn-err",function(t,e,n){u&&(this.thrown=!0,o(n))}),s.on("fn-end",function(){u&&!this.thrown&&d>0&&(d-=1)}),s.on("internal-error",function(t){i("ierr",[t,(new Date).getTime(),!0])})},{}],3:[function(t,e,n){t("loader").features.ins=!0},{}],4:[function(t,e,n){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var o=t("ee"),i=t("handle"),a=t(8),s=t(7);t("loader").features.stn=!0,t(6);var c=NREUM.o.EV;o.on("fn-start",function(t,e){var n=t[0];n instanceof c&&(this.bstStart=Date.now())}),o.on("fn-end",function(t,e){var n=t[0];n instanceof c&&i("bst",[n,e,this.bstStart,Date.now()])}),a.on("fn-start",function(t,e,n){this.bstStart=Date.now(),this.bstType=n}),a.on("fn-end",function(t,e){i("bstTimer",[e,this.bstStart,Date.now(),this.bstType])}),s.on("fn-start",function(){this.bstStart=Date.now()}),s.on("fn-end",function(t,e){i("bstTimer",[e,this.bstStart,Date.now(),"requestAnimationFrame"])}),o.on("pushState-start",function(t){this.time=Date.now(),this.startPath=location.pathname+location.hash}),o.on("pushState-end",function(t){i("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),"addEventListener"in window.performance&&(window.performance.clearResourceTimings?window.performance.addEventListener("resourcetimingbufferfull",function(t){i("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.clearResourceTimings()},!1):window.performance.addEventListener("webkitresourcetimingbufferfull",function(t){i("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.webkitClearResourceTimings()},!1)),document.addEventListener("scroll",r,!1),document.addEventListener("keypress",r,!1),document.addEventListener("click",r,!1)}},{}],5:[function(t,e,n){function r(t){for(var e=t;e&&!e.hasOwnProperty(u);)e=Object.getPrototypeOf(e);e&&o(e)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,e){return t[1]}var a=t("ee").get("events"),s=t(16)(a),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";e.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,e){if(t[1]){var n=t[1];if("function"==typeof n){var r=c(n,"nr@wrapped",function(){return s(n,"fn-",null,n.name||"anonymous")});this.wrapped=t[1]=r}else"function"==typeof n.handleEvent&&s.inPlace(n,["handleEvent"],"fn-")}}),a.on(d+"-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{}],6:[function(t,e,n){var r=t("ee").get("history"),o=t(16)(r);e.exports=r,o.inPlace(window.history,["pushState","replaceState"],"-")},{}],7:[function(t,e,n){var r=t("ee").get("raf"),o=t(16)(r);e.exports=r,o.inPlace(window,["requestAnimationFrame","mozRequestAnimationFrame","webkitRequestAnimationFrame","msRequestAnimationFrame"],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],8:[function(t,e,n){function r(t,e,n){t[0]=a(t[0],"fn-",null,n)}function o(t,e,n){this.method=n,this.timerDuration="number"==typeof t[1]?t[1]:0,t[0]=a(t[0],"fn-",this,n)}var i=t("ee").get("timer"),a=t(16)(i);e.exports=i,a.inPlace(window,["setTimeout","setImmediate"],"setTimer-"),a.inPlace(window,["setInterval"],"setInterval-"),a.inPlace(window,["clearTimeout","clearImmediate"],"clearTimeout-"),i.on("setInterval-start",r),i.on("setTimer-start",o)},{}],9:[function(t,e,n){function r(t,e){d.inPlace(e,["onreadystatechange"],"fn-",s)}function o(){var t=this,e=u.context(t);t.readyState>3&&!e.resolved&&(e.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,v,"fn-",s)}function i(t){w.push(t),h&&(g=-g,b.data=g)}function a(){for(var t=0;t<w.length;t++)r([],w[t]);w.length&&(w=[])}function s(t,e){return e}function c(t,e){for(var n in t)e[n]=t[n];return e}t(5);var f=t("ee"),u=f.get("xhr"),d=t(16)(u),l=NREUM.o,p=l.XHR,h=l.MO,m="readystatechange",v=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],w=[];e.exports=u;var y=window.XMLHttpRequest=function(t){var e=new p(t);try{u.emit("new-xhr",[e],e),e.addEventListener(m,o,!1)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}return e};if(c(p,y),y.prototype=p.prototype,d.inPlace(y.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,e){r(t,e),i(e)}),u.on("open-xhr-start",r),h){var g=1,b=document.createTextNode(g);new h(a).observe(b,{characterData:!0})}else f.on("fn-end",function(t){t[0]&&t[0].type===m||a()})},{}],10:[function(t,e,n){function r(t){var e=this.params,n=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;l>r;r++)t.removeEventListener(d[r],this.listener,!1);if(!e.aborted){if(n.duration=(new Date).getTime()-this.startTime,4===t.readyState){e.status=t.status;var i=o(t,this.lastSize);if(i&&(n.rxSize=i),this.sameOrigin){var a=t.getResponseHeader("X-NewRelic-App-Data");a&&(e.cat=a.split(", ").pop())}}else e.status=0;n.cbTime=this.cbTime,u.emit("xhr-done",[t],t),c("xhr",[e,n,this.startTime])}}}function o(t,e){var n=t.responseType;if("json"===n&&null!==e)return e;var r="arraybuffer"===n||"blob"===n||"json"===n?t.response:t.responseText;return i(r)}function i(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(e){return}}}function a(t,e){var n=f(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}var s=t("loader");if(s.xhrWrappable){var c=t("handle"),f=t(11),u=t("ee"),d=["load","error","abort","timeout"],l=d.length,p=t("id"),h=t(13),m=window.XMLHttpRequest;s.features.xhr=!0,t(9),u.on("new-xhr",function(t){var e=this;e.totalCbs=0,e.called=0,e.cbTime=0,e.end=r,e.ended=!1,e.xhrGuids={},e.lastSize=null,h&&(h>34||10>h)||window.opera||t.addEventListener("progress",function(t){e.lastSize=t.loaded},!1)}),u.on("open-xhr-start",function(t){this.params={method:t[0]},a(this,t[1]),this.metrics={}}),u.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),u.on("send-xhr-start",function(t,e){var n=this.metrics,r=t[0],o=this;if(n&&r){var a=i(r);a&&(n.txSize=a)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof e.onload))&&o.end(e)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}};for(var s=0;l>s;s++)e.addEventListener(d[s],this.listener,!1)}),u.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),u.on("xhr-load-added",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),u.on("xhr-load-removed",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),u.on("addEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&u.emit("xhr-load-added",[t[1],t[2]],e)}),u.on("removeEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&u.emit("xhr-load-removed",[t[1],t[2]],e)}),u.on("fn-start",function(t,e,n){e instanceof m&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),u.on("fn-end",function(t,e){this.xhrCbStart&&u.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}},{}],11:[function(t,e,n){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname);var i=!e.protocol||":"===e.protocol||e.protocol===n.protocol,a=e.hostname===document.domain&&e.port===n.port;return r.sameOrigin=i&&(!e.hostname||a),r}},{}],12:[function(t,e,n){function r(t,e){return function(){o(t,[(new Date).getTime()].concat(a(arguments)),null,e)}}var o=t("handle"),i=t(14),a=t(15);"undefined"==typeof window.newrelic&&(newrelic=NREUM);var s=["setPageViewName","setCustomAttribute","finished","addToTrace","inlineHit"],c=["addPageAction"],f="api-";i(s,function(t,e){newrelic[e]=r(f+e,"api")}),i(c,function(t,e){newrelic[e]=r(f+e)}),e.exports=newrelic,newrelic.noticeError=function(t){"string"==typeof t&&(t=new Error(t)),o("err",[t,(new Date).getTime()])}},{}],13:[function(t,e,n){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),e.exports=r},{}],14:[function(t,e,n){function r(t,e){var n=[],r="",i=0;for(r in t)o.call(t,r)&&(n[i]=e(r,t[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],15:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(0>o?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=r},{}],16:[function(t,e,n){function r(t){return!(t&&"function"==typeof t&&t.apply&&!t[a])}var o=t("ee"),i=t(15),a="nr@original",s=Object.prototype.hasOwnProperty,c=!1;e.exports=function(t){function e(t,e,n,o){function nrWrapper(){var r,a,s,c;try{a=this,r=i(arguments),s="function"==typeof n?n(r,a):n||{}}catch(u){d([u,"",[r,a,o],s])}f(e+"start",[r,a,o],s);try{return c=t.apply(a,r)}catch(l){throw f(e+"err",[r,a,l],s),l}finally{f(e+"end",[r,a,c],s)}}return r(t)?t:(e||(e=""),nrWrapper[a]=t,u(t,nrWrapper),nrWrapper)}function n(t,n,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<n.length;c++)s=n[c],a=t[s],r(a)||(t[s]=e(a,f?s+o:o,i,s))}function f(e,n,r){if(!c){c=!0;try{t.emit(e,n,r)}catch(o){d([o,e,n,r])}c=!1}}function u(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){d([r])}for(var o in t)s.call(t,o)&&(e[o]=t[o]);return e}function d(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=o),e.inPlace=n,e.flag=a,e}},{}],ee:[function(t,e,n){function r(){}function o(t){function e(t){return t&&t instanceof r?t:t?s(t,a,i):i()}function n(n,r,o){t&&t(n,r,o);for(var i=e(o),a=l(n),s=a.length,c=0;s>c;c++)a[c].apply(i,r);var u=f[v[n]];return u&&u.push([w,n,r,i]),i}function d(t,e){m[t]=l(t).concat(e)}function l(t){return m[t]||[]}function p(t){return u[t]=u[t]||o(n)}function h(t,e){c(t,function(t,n){e=e||"feature",v[n]=e,e in f||(f[e]=[])})}var m={},v={},w={on:d,emit:n,get:p,listeners:l,context:e,buffer:h};return w}function i(){return new r}var a="nr@context",s=t("gos"),c=t(14),f={},u={},d=e.exports=o();d.backlog=f},{}],gos:[function(t,e,n){function r(t,e,n){if(o.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[e]=r,r}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){o.buffer([t],r),o.emit(t,e,n)}var o=t("ee").get("handle");e.exports=r,r.ee=o},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!m++){var t=h.info=NREUM.info,e=u.getElementsByTagName("script")[0];if(t&&t.licenseKey&&t.applicationID&&e){c(l,function(e,n){t[e]||(t[e]=n)});var n="https"===d.split(":")[0]||t.sslForHttp;h.proto=n?"https://":"http://",s("mark",["onload",a()],null,"api");var r=u.createElement("script");r.src=h.proto+t.agent,e.parentNode.insertBefore(r,e)}}}function o(){"complete"===u.readyState&&i()}function i(){s("mark",["domContent",a()],null,"api")}function a(){return(new Date).getTime()}var s=t("handle"),c=t(14),f=window,u=f.document;NREUM.o={ST:setTimeout,CT:clearTimeout,XHR:f.XMLHttpRequest,REQ:f.Request,EV:f.Event,PR:f.Promise,MO:f.MutationObserver},t(12);var d=""+location,l={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-943.min.js"},p=window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent),h=e.exports={offset:a(),origin:d,features:{},xhrWrappable:p};u.addEventListener?(u.addEventListener("DOMContentLoaded",i,!1),f.addEventListener("load",r,!1)):(u.attachEvent("onreadystatechange",o),f.attachEvent("onload",r)),s("mark",["firstbyte",a()],null,"api");var m=0},{}]},{},["loader",2,10,4,3]);</script>
+<meta id="jsviewport" name="viewport" content="width=device-width"/>
+<meta name="author" content="Adafruit Industries"/>
+<meta name="generator" content="Adafuit Shopping Cart based on Zencart"/>
+<link rel="mask-icon" href="https://cdn-shop.adafruit.com/static/adafruit_favicon.svg" color="#000000">
+<link rel="apple-touch-icon" sizes="57x57" href="https://cdn-shop.adafruit.com/static/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="114x114" href="https://cdn-shop.adafruit.com/static/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="72x72" href="https://cdn-shop.adafruit.com/static/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="144x144" href="https://cdn-shop.adafruit.com/static/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="60x60" href="https://cdn-shop.adafruit.com/static/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="120x120" href="https://cdn-shop.adafruit.com/static/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="76x76" href="https://cdn-shop.adafruit.com/static/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="152x152" href="https://cdn-shop.adafruit.com/static/apple-touch-icon-152x152.png">
+<link rel="icon" type="image/png" href="https://cdn-shop.adafruit.com/static/favicon-196x196.png" sizes="196x196">
+<link rel="icon" type="image/png" href="https://cdn-shop.adafruit.com/static/favicon-160x160.png" sizes="160x160">
+<link rel="icon" type="image/png" href="https://cdn-shop.adafruit.com/static/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="https://cdn-shop.adafruit.com/static/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="https://cdn-shop.adafruit.com/static/favicon-32x32.png" sizes="32x32">
+<meta name="msapplication-TileColor" content="#1a1919">
+<meta name="msapplication-TileImage" content="https://cdn-shop.adafruit.com/static/mstile-144x144.png">
+<meta name="format-detection" content="telephone=no">
+<base href="https://www.adafruit.com/"/>
+<title>Pi Zero : Adafruit Industries, Unique &amp; fun DIY electronics and kits</title><link rel="alternate" type="application/rss+xml" title="adafruit industries blog  RSS Feed" href="http://blog.adafruit.com/feed/"/> <meta name="description" content="Adafruit Industries, Unique &amp; fun DIY electronics and kits : Pi Zero - Tools Gift Certificates Arduino Cables Sensors LEDs Books Breakout Boards Power EL Wire/Tape/Panel Components & Parts LCDs & Displays Wearables BeagleBone Prototyping Raspberry Pi Wireless Young Engineers 3D printing NeoPixels Kits & Projects Robotics & CNC Accessories Software Cosplay/Costuming Halloween Reseller & University Packs Internet of Things - IoT Particle Development Boards ecommerce, open source, shop, online shopping"/>
+<meta name="keywords" content="Tools Gift Certificates Arduino Cables Sensors LEDs Books Breakout Boards Power EL Wire/Tape/Panel Components & Parts LCDs & Displays Wearables BeagleBone Prototyping Raspberry Pi Wireless Young Engineers 3D printing NeoPixels Kits & Projects Robotics & CNC Accessories Software Cosplay/Costuming Halloween Reseller & University Packs Internet of Things - IoT Particle Development Boards ecommerce, open source, shop, online shopping Pi Zero"/>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-7723544-1', 'auto');
+  ga('require', 'ec');
+</script>
+
+
+<script type="text/javascript">
+  var gts = gts || [];
+
+  gts.push(["id", "27252"]);
+  gts.push(["badge_position", "BOTTOM_RIGHT"]);
+  gts.push(["locale", "en_US"]);
+    gts.push(["google_base_subaccount_id", "5543303"]);
+  gts.push(["google_base_country", "US"]);
+  gts.push(["google_base_language", "en"]);
+
+  (function() {
+    var gts = document.createElement("script");
+    gts.type = "text/javascript";
+    gts.async = true;
+    gts.src = "https://www.googlecommerce.com/trustedstores/api/js";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(gts, s);
+  })();
+</script>
+
+<link rel="stylesheet" type="text/css" href="https://cloud.typography.com/6029052/784822/css/fonts.css"/>
+<link rel="stylesheet" type="text/css" href="/includes/templates/adafruit2013/css/bootstrap.css"/>
+<link rel="stylesheet" type="text/css" href="/includes/templates/adafruit2013/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+<script src="/includes/templates/adafruit2013/jscript/bootstrap.min.js"></script>
+<script src="/includes/templates/adafruit2013/jscript/modernizr.js" type="text/javascript"></script>
+<script src="/includes/templates/adafruit2013/jscript/adafruit.hoverMenu.js" type="text/javascript"></script>
+<script src="/includes/templates/adafruit2013/jscript/adafruit.mobileMenu.js" type="text/javascript"></script>
+<script src="/includes/templates/adafruit2013/jscript/jquery.hoverIntent.js" type="text/javascript"></script>
+<script src="/includes/templates/adafruit2013/jscript/hogan.js" type="text/javascript"></script>
+<script src="/includes/templates/adafruit2013/jscript/typeahead.js" type="text/javascript"></script>
+<script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+<script src="//cdn.jsdelivr.net/algoliasearch.helper/2/algoliasearch.helper.min.js"></script>
+<script src="/includes/templates/adafruit2013/jscript/adafruit.instant-search.js" type="text/javascript"></script>
+<script>
+  $(document).ready(function(){
+    $('#search-form').on("submit" ,function(e){
+      e.preventDefault();
+      pid = parseInt($('#search').val(), 10);
+      if($.isNumeric($('#search').val()) && !isNaN(pid) && pid < 10000){
+        window.location.replace('https://www.adafruit.com' + '/product/' + pid );
+      }
+    });
+
+    $('#search-wrapper').on("click" ,function(e){
+      $('#search-wrapper').addClass('focused');
+      $('#search').trigger('focus');
+    });
+    $('#search').on("blur" ,function(e){
+      $('#search-wrapper').removeClass('focused');
+    });
+  });
+</script>
+<script src="/includes/templates/adafruit2013/jscript/jquery.fitvids.js" type="text/javascript"></script>
+<script src="/includes/javascript/jquery.cookie.js" type="text/javascript"></script>
+<script src="/includes/javascript/jquery.wildcart.js" type="text/javascript"></script>
+<script src="/includes/javascript/ada_ec.js" type="text/javascript"></script>
+<script>
+  var ada_env = {"env":"prod","algolia":{"app_id":"W9DMM4OTH0","app_key":"e613bcda3453b9ef887e2724362f9e57"}};
+</script>
+<link rel="stylesheet" type="text/css" href="https://www.adafruit.com/includes/templates/adafruit2013/css/style.css?1464167963"/>
+<!--[if lt IE 9]>
+<script src="/includes/templates/adafruit2013/jscript/respond.min.js"></script>
+<script src="/includes/templates/adafruit2013/jscript/html5shiv.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+$("a > button").on('click', function() {
+    location.href = $(this).closest("a").attr("href");
+});
+});
+</script>
+<![endif]-->
+<script type="text/javascript">
+	function hideMessage() {
+		$('.messaging-container').hide();
+		$('#small-header-nav').removeClass('msg');
+		document.cookie = "seen_msg_=1; path=/;domain=adafruit.com;";
+	}
+
+	$(document).ready(function(){
+
+		// Turn on all the carousels!
+		if($('.carousel').length > 0) $('.carousel').carousel();
+
+		$('#navigation nav > ul > li').hover_menu();
+		$('#small-header-content').mobile_menu();
+
+
+		function videoautoheight(){
+			$("iframe.youtube").each(function() {
+				var orig = $(this);
+				var container = orig.parents().find("div:last");
+				container.fitVids();
+			});
+		}
+
+		videoautoheight();
+
+		$('#header-cart').shoppingCartTag({
+		  cartUpdated : function(cart_data){
+			cartCount = 0;
+			this.html(cart_data['cart_totals']['items'] + ' Items <i class="fa fa-shopping-cart"></i>');
+		  }
+		});
+		$('.small-cart-count').shoppingCartTag({
+		  cartUpdated : function(cart_data){
+			cartCount = 0;
+			this.html(cart_data['cart_totals']['items'] );
+		  }
+		});
+	});
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "WebSite",
+  "url": "https://www.adafruit.com/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://www.adafruit.com/search?g=1&q={search_term}",
+    "query-input": "required name=search_term"
+  }
+}
+</script>
+</head>
+<body class="no-js">
+<div id="outer-wrapper">
+<div id="inner-wrapper">
+<script>
+	var oldQuery = '';
+	function submitNewRelicTracker(query){
+		// Prepare some information to send to NewRelic
+		var viewportWidth = $(window).width();
+		var viewportHeight = $(window).height();
+		var newRelicInfo = {
+			'search_token' : '716dd701656c37be78bfbe664033aeef',
+			'url' : '/categories/813?hidden=yes&amp;main_page=index&amp;cPath=813',
+			'query' : query,
+			'autocompleted' : '',
+			'product_selected' : false,
+			'viewportWidth' : viewportWidth,
+			'viewportHeight' : viewportHeight
+		};
+		newRelicInfo['query'] = query;
+		$.ajax({
+			type: "POST",
+			async: false,
+			url: '/api/nr_search.php',
+			data: newRelicInfo
+		});
+	}
+	function autocompleteNewRelicTracker(autocompleted){
+		// Prepare some information to send to NewRelic
+		var viewportWidth = $(window).width();
+		var viewportHeight = $(window).height();
+		var newRelicInfo = {
+			'search_token' : '716dd701656c37be78bfbe664033aeef',
+			'url' : '/categories/813?hidden=yes&amp;main_page=index&amp;cPath=813',
+			'query' : oldQuery,
+			'autocompleted' : autocompleted,
+			'product_selected' : true,
+			'viewportWidth' : viewportWidth,
+			'viewportHeight' : viewportHeight
+		};
+		$.ajax({
+			type: "POST",
+			async: false,
+			url: '/api/nr_search.php',
+			data: newRelicInfo
+		});
+	}
+	$( document ).ready(function() {
+		$("#search-form").submit(function(index) {
+			// We need to send everything to NewRelic.
+			submitNewRelicTracker($('#search').val());
+		});
+		$("#mobile-search-form").submit(function(index) {
+			// We need to send everything to NewRelic.
+			submitNewRelicTracker($('#mobile-search').val());
+		});
+	});
+</script>
+<header id="adafruit-header" class="clearfix">
+<div id="small-header-content" class="container visible-xs">
+<button id="small-header-menu-button" class="c-hamburger c-hamburger--htx">
+<span>toggle menu</span>
+</button>
+<div class="small-header-logo">
+<a href="">
+<img alt="Adafruit Logo" height="50" width="50" id="logo_small" src="includes/templates/adafruit2013/images/adafruit_logo_small.png" title="Adafruit"/>
+</a>
+</div>
+<a class="small-header-cart" href="shopping_cart">
+<span class="small-cart-count">0</span>
+<i class="fa fa-shopping-cart"></i>
+</a>
+</div>
+<nav id="small-header-nav" role="navigation" class="visible-xs">
+<div class="block">
+<ul>
+<li>
+<div id="small-search-wrapper">
+<div id="small-search-inner-wrapper">
+<form id="mobile-search-form" action="https://www.adafruit.com/search" method="get">
+<label for="search" style="display:none;">Search</label>
+<input class="search" type="text" id="mobile-search" name="qs" placeholder=""/>
+<button class="search-button-mobile" type="submit"><i class="fa fa-search"></i></button>
+</form>
+</div>
+</div>
+</li>
+</ul>
+<ul class="breadcrumbs"><li><a id="hamburger-home-link" href="#">MENU</a></li></ul>
+<ul class="menu"><li><a href="https://www.adafruit.com">SHOP</a><ul class="menu"><li><a href="https://www.adafruit.com">HOME</a></li><li><a href="https://www.adafruit.com/new">NEW PRODUCTS</a></li><li><a href="https://www.adafruit.com/categories/17">ARDUINO</a></li><li><a href="https://www.adafruit.com/categories/105">RASPBERRY PI</a></li><li><a href="https://www.adafruit.com/categories/75">BEAGLEBONE</a></li><li><a href="https://www.adafruit.com/categories/168">NEOPIXELS</a></li><li><a href="https://www.adafruit.com/categories/65">WEARABLES</a></li><li><a href="https://www.adafruit.com/categories/290">COSPLAY/COSTUMING</a></li><li><a href="https://www.adafruit.com/categories/117">YOUNG ENGINEERS</a></li><li><a href="https://www.adafruit.com/categories/82">PROTOTYPING</a></li><li><a href="https://www.adafruit.com/categories/307">HALLOWEEN</a></li><li><a href="https://www.adafruit.com/categories/203">KITS & PROJECTS</a></li><li><a href="https://www.adafruit.com/categories/42">BREAKOUT BOARDS</a></li><li><a href="https://www.adafruit.com/categories/851">DEVELOPMENT BOARDS</a></li><li><a href="https://www.adafruit.com/categories/328">RESELLER & UNIVERSITY PACKS</a></li><li><a href="https://www.adafruit.com/categories/63">LCDS & DISPLAYS</a></li><li><a href="https://www.adafruit.com/categories/37">LEDS</a></li><li><a href="https://www.adafruit.com/categories/44">POWER</a></li><li><a href="https://www.adafruit.com/categories/33">CABLES</a></li><li><a href="https://www.adafruit.com/categories/8">TOOLS</a></li><li><a href="https://www.adafruit.com/categories/227">ROBOTICS & CNC</a></li><li><a href="https://www.adafruit.com/categories/234">ACCESSORIES</a></li><li><a href="https://www.adafruit.com/categories/54">COMPONENTS & PARTS</a></li><li><a href="https://www.adafruit.com/categories/35">SENSORS</a></li><li><a href="https://www.adafruit.com/categories/50">EL WIRE/TAPE/PANEL</a></li><li><a href="https://www.adafruit.com/categories/128">3D PRINTING</a></li><li><a href="https://www.adafruit.com/categories/40">BOOKS</a></li><li><a href="https://www.adafruit.com/categories/254">SOFTWARE</a></li><li><a href="https://www.adafruit.com/categories/112">WIRELESS</a></li><li><a href="https://www.adafruit.com/categories/14">GIFT CERTIFICATES</a></li><li><a href="https://www.adafruit.com/categories/342">INTERNET OF THINGS - IOT</a></li><li><a href="https://www.adafruit.com/categories/771">PARTICLE</a></li></ul></li><li><a href="https://blog.adafruit.com">BLOG</a><ul class="menu"><li><a href="https://blog.adafruit.com">HOME</a></li><li><a href="https://blog.adafruit.com/category/3d-printing/">3D PRINTING</a></li><li><a href="https://blog.adafruit.com/category/art/">ART</a></li><li><a href="https://blog.adafruit.com/category/raspberry-pi/">RASPBERRY PI</a></li><li><a href="https://blog.adafruit.com/category/random/">RANDOM</a></li><li><a href="https://blog.adafruit.com/category/arduino/">ARDUINO</a></li><li><a href="https://blog.adafruit.com/category/wearables/">WEARABLES</a></li><li><a href="https://blog.adafruit.com/category/science/">SCIENCE</a></li><li><a href="https://blog.adafruit.com/category/costuming/">COSTUMING</a></li><li><a href="https://blog.adafruit.com/category/cosplay/">COSPLAY</a></li></ul></li><li><a href="https://learn.adafruit.com">LEARN</a><ul class="menu"><li><a href="https://learn.adafruit.com/">HOME</a></li><li><a href="https://learn.adafruit.com/category/components">COMPONENTS</a></li><li><a href="https://learn.adafruit.com/category/sensors">SENSORS</a></li><li><a href="https://learn.adafruit.com/category/hacks">HACKS</a></li><li><a href="https://learn.adafruit.com/category/microcomputers">MICROCOMPUTERS</a></li><li><a href="https://learn.adafruit.com/category/adafruit-products">ADAFRUIT PRODUCTS</a></li><li><a href="https://learn.adafruit.com/category/maker-business">MAKER BUSINESS</a></li><li><a href="https://learn.adafruit.com/category/projects">PROJECTS</a></li><li><a href="https://learn.adafruit.com/category/leds">LEDS</a></li><li><a href="https://learn.adafruit.com/category/raspberry-pi">RASPBERRY PI</a></li><li><a href="https://learn.adafruit.com/category/braincrafts">BRAINCRAFTS</a></li><li><a href="https://learn.adafruit.com/category/lcds-and-displays">LCDS & DISPLAYS</a></li><li><a href="https://learn.adafruit.com/category/el">EL WIRE/TAPE/PANEL</a></li><li><a href="https://learn.adafruit.com/category/tools">TOOLS</a></li><li><a href="https://learn.adafruit.com/category/microcontrollers">MICROCONTROLLERS</a></li><li><a href="https://learn.adafruit.com/category/learn-arduino">LEARN ARDUINO</a></li><li><a href="https://learn.adafruit.com/category/customer-projects">CUSTOMER PROJECTS</a></li><li><a href="https://learn.adafruit.com/category/beaglebone">BEAGLEBONE</a></li><li><a href="https://learn.adafruit.com/category/circuit-playground">CIRCUIT PLAYGROUND</a></li><li><a href="https://learn.adafruit.com/category/3d-printing">3D PRINTING</a></li><li><a href="https://learn.adafruit.com/category/trinket">TRINKET</a></li><li><a href="https://learn.adafruit.com/category/robotics">ROBOTICS</a></li><li><a href="https://learn.adafruit.com/category/collins-lab">COLLIN'S LAB</a></li><li><a href="https://learn.adafruit.com/category/community-support">COMMUNITY SUPPORT</a></li><li><a href="https://learn.adafruit.com/category/wearables">WEARABLES</a></li><li><a href="https://learn.adafruit.com/category/adafruit-io">ADAFRUIT IO</a></li><li><a href="https://learn.adafruit.com/category/arduino">ARDUINO</a></li><li><a href="https://learn.adafruit.com/category/feather">FEATHER</a></li><li><a href="https://learn.adafruit.com/category/circuit-playground-1">CIRCUIT PLAYGROUND</a></li><li><a href="https://learn.adafruit.com/category/wireless">WIRELESS</a></li></ul></li><li><a href="https://www.youtube.com/adafruit">VIDEOS</a></li><li><a id="mobile-sign-in-link" href="https://accounts.adafruit.com">SIGN IN</a></li><li><a id="mobile-sign-out-link" href="https://accounts.adafruit.com/users/sign_out">SIGN OUT</a></li></ul> <script src="/includes/templates/adafruit2013/jscript/hamburger_menu.js"></script>
+</div>
+</nav>
+<div id="header-content" class="container hidden-xs">
+<div id="header-profile">
+<a href="shopping_cart" id="header-cart">
+0 Items <i class="fa fa-shopping-cart"></i>
+</a>
+<div id="account">
+<a href="index.php?main_page=login">Sign In</a>
+</div>
+<div id="search-wrapper">
+<form id="search-form" action="search" method="get">
+<label for="search" style="display:none;">Search</label>
+<input id="search" data-algolia-app="W9DMM4OTH0" data-algolia-key="e613bcda3453b9ef887e2724362f9e57" data-env="prod" type="text" autocomplete="off" spellcheck="false" autocorrect="off" name="q"/>
+<i class="fa fa-search"></i>
+<input type="submit" style="height: 1px; width: 1px; color:#000; background-color: #000;">
+</form>
+</div>
+</div>
+<div id="navigation">
+<a href="">
+<img alt="Adafruit Logo" height="60" width="172" id="logo" src="includes/templates/adafruit2013//images/logo_2x.png" title="Adafruit"/>
+</a>
+<nav class="hover-menu">
+<ul>
+<li id="nav-shop" data-load="api/flyouts/shop.html"><a href="categories">SHOP</a></li>
+<li id="nav-blog" data-load="https://blog.adafruit.com/adafruit-blog-flyouts"><a href="https://blog.adafruit.com">BLOG</a></li>
+<li id="nav-learn" data-load="https://learn.adafruit.com/api/hover-menu/flyouts/learn.html"><a href="https://learn.adafruit.com">LEARN</a></li>
+<li id="nav-support">
+<a href="https://forums.adafruit.com">FORUMS</a>
+</li>
+<li id="nav-video">
+<a href="//www.youtube.com/adafruit">VIDEOS</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</header>
+<script>
+	var justBlurred = false;
+</script>
+<div class="instant-search-container container">
+<main>
+<div class="row">
+
+<div id="left-column" class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+
+<div id="is-header"></div>
+<hr class="top-ten"/>
+<div class="row">
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+<div id="is-hits"></div>
+</div>
+</div>
+<div class="row">
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+<div id="is-pagination"></div>
+</div>
+</div>
+</div>
+<div id="right-column" class="col-lg-3 col-md-3 hidden-sm hidden-xs">
+<div id="categories"></div>
+<div id="facets"></div>
+</div>
+</div>
+</main>
+
+<script type="text/template" id="is-header-template">
+    <div class="row" >
+        <div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12 is-title gotham-light" >
+            Search results for <span class="gotham-book">{{query}}</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 is-tabs">
+            PRODUCTS | <a href="https://learn.adafruit.com/search?q={{query}}">LEARN</a> | <a href="https://blog.adafruit.com/?s={{query}}">BLOG</a> | <a href="https://forums.adafruit.com/search.php?keywords={{query}}" >FORUMS</a>
+        </div>
+    </div>
+</script>
+
+<script type="text/template" id="hit-template">
+    {{#hits}}
+        <div class="row product-listing">
+            <div class="img-container col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                <a href="/products/{{objectID}}"
+                class="ec_click_product"
+                data-pid="{{objectID}}"
+                data-name="{{name}}"
+                data-position="{{@index}}"
+                data-listname="Product Listing instant-search">
+                    {{#is_video}}
+                        <div class="prodvid-container">
+                            <img src="https://cdn-shop.adafruit.com/product-videos/320x240/{{image}}.jpg"/>
+                            <video width="100%" preload="auto" muted="muted" autoplay="autoplay" loop="loop" poster="https://cdn-shop.adafruit.com/product-videos/320x240/{{image}}.jpg">
+                                <source src="https://cdn-shop.adafruit.com/product-videos/320x240/{{image}}.mp4" />
+                                <source src="https://cdn-shop.adafruit.com/product-videos/320x240/{{image}}.webm" type="video/webm; codecs=vp8,vorbis" />
+                                <source src="https://cdn-shop.adafruit.com/product-videos/320x240/{{image}}.ogv" type="video/ogg; codecs=theora,vorbis" />
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    {{/is_video}}
+                    {{^is_video}}
+                        <img class="img-responsive" src="https://cdn-shop.adafruit.com/310x233/{{image}}" alt="{{name}}" />
+                    {{/is_video}}
+                </a>
+            </div>
+            <div class="product-listing-right col-lg-8 col-md-8 col-sm-8 col-xs-6">
+                <div class="product-listing-text-wrapper">
+                    <h1 class="gotham-book"><a href="/products/{{objectID}}"
+                    class="ec_click_product"
+                    data-pid="{{objectID}}"
+                    data-name="{{name}}"
+                    data-position="{{@index}}"
+                    data-listname="Product Listing instant-search">
+                    {{{name}}}
+                    {{#model}}
+                    - {{{model}}}
+                    {{/model}}
+                    </a></h1>
+                    <div class="product_id">PRODUCT ID: {{objectID}}</div>
+                    <div class="product-description clearfix hidden-md hidden-sm hidden-xs is-description">
+                        {{{description_lg}}}
+                    </div>
+                </div>
+                <div class="product-info clearfix row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 hidden-xs">
+                        {{#add_to_cart}}
+                            <form action="added" method="post">
+                                <input type="hidden" name="action" value="add_product" />
+                                <input type="hidden" name="pid" value="{{objectID}}" />
+                                <input type="hidden" name="qty" value="1" />
+                                <input type="hidden" name="source_page" value="instant-search" />
+                                <input type="hidden" name="source_id" value="instant-search" />
+                                <button type="submit"  class="blue-button-large" data-pid="{{objectID}}" data-qty="1">{{button_text}}</button>
+                            </form>
+                        {{/add_to_cart}}
+                        {{^add_to_cart}}
+                            <a href="products/{{objectID}}"
+                            class="ec_click_product"
+                            data-pid="{{objectID}}"
+                            data-name="{{name}}"
+                            data-listname="Product Listing (more info) instant-search">
+                                <button class="blue-button-large" >{{button_text}}</button>
+                            </a>
+                        {{/add_to_cart}}
+                    </div>
+                    <div class="price-stock col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="price">{{#price}}${{price}}{{/price}}</div>
+                        <div class="stock">
+                            <span class='out-of-stock'>{{list_tag}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- mobile view -->
+        <div class="row top-twenty visible-xs">
+            <div class="col-xs-12">
+                {{#add_to_cart}}
+                    <form action="added" method="post">
+                        <input type="hidden" name="action" value="add_product" />
+                        <input type="hidden" name="pid" value="{{objectID}}" />
+                        <input type="hidden" name="qty" value="1" />
+                        <div class="mobile-button-row">
+                        <button type="submit"  class="blue-button-large add_to_cart_ec"
+                        data-pid="{{objectID}}"
+                        data-qty="1"
+                        data-name="{{name}}"
+                        >ADD TO CART</button>
+                        </div>
+                    </form>
+                {{/add_to_cart}}
+                {{^add_to_cart}}
+                    <a href="products/{{objectID}}"
+                    class="ec_click_product"
+                    data-pid="{{objectID}}"
+                    data-name="{{name}}"
+                    data-listname="Product Listing (more info) instant-search">
+                        <div class="mobile-button-row">
+                            <button class="blue-button-large">MORE INFO</button>
+                        </div>
+                    </a>
+                {{/add_to_cart}}
+            </div>
+        </div>
+        <hr />
+    {{/hits}}
+</script>
+
+<script type="text/template" id="pagination-template">
+  <ul class="is-pagination">
+    <li {{^prev_page}}class="disabled"{{/prev_page}}><a {{#prev_page}}class="go-to-page" data-page="{{ prev_page }}"{{/prev_page}}>Previous</a></li>
+    {{#pages}}
+        <li class="{{#current}}active{{/current}} {{#disabled}}disabled{{/disabled}}"><a {{^disabled}} class="go-to-page" data-page="{{ number }}" {{/disabled}}>{{ number }}</a></li>
+    {{/pages}}
+    <li {{^next_page}}class="disabled"{{/next_page}}><a {{#next_page}}class="go-to-page" data-page="{{ next_page }}"{{/next_page}}>Next</a></li>
+  </ul>
+</script>
+
+<script type="text/template" id="categories-template">
+    <div class="facet">
+        <h5 class="is-facet-header gotham-light">CATEGORIES</h5>
+        <ul class="lvl0">
+            {{#cats}}
+                {{#show_0}}
+                    <li>
+                        <a class="facet-link category-refine {{#isChecked_0}}facet-refined{{/isChecked_0}} gotham-light" data-type="category" data-level="0" data-value="{{ path }}"
+                        {{#isChecked_0}}data-checked="true"{{/isChecked_0}} {{#isRefined_0}}data-refined="true"{{/isRefined_0}}
+                        {{^isChecked_0}}data-checked="false"{{/isChecked_0}} {{^isRefined_0}}data-refined="false"{{/isRefined_0}}
+                        >
+                            <input type="checkbox" class="facet-checkbox" {{#isChecked_0}}checked="checked"{{/isChecked_0}} id="cats_{{ id }}" /> {{ name }}
+                        </a>
+                        <ul class="lvl1">
+                            {{#isChecked_0}}
+                                {{#subs}}
+                                    {{#show_1}}
+                                        <li>
+                                            <a class="facet-link category-refine {{#isRefined}}facet-refined{{/isRefined}} gotham-light" data-type="category" data-level="1" data-value="{{ path }}"
+                                            {{#isChecked_1}}data-checked="true"{{/isChecked_1}} {{#isRefined_1}}data-refined="true"{{/isRefined_1}}
+                                            {{^isChecked_1}}data-checked="false"{{/isChecked_1}} {{^isRefined_1}}data-refined="false"{{/isRefined_1}}
+                                            >
+                                                <input type="checkbox" class="facet-checkbox" {{#isChecked_1}}checked="checked"{{/isChecked_1}}/> {{ name }}
+                                            </a>
+                                            <ul class="lvl2">
+                                            {{#isChecked_1}}
+                                                {{#subs}}
+                                                    {{#show_2}}
+                                                        <li>
+                                                            <a class="facet-link category-refine {{#isRefined}}facet-refined{{/isRefined}} gotham-light" data-type="category" data-level="2"  data-value="{{ path }}"
+                                                            {{#isChecked_2}}data-checked="true"{{/isChecked_2}} {{#isRefined_2}}data-refined="true"{{/isRefined_2}}
+                                                            {{^isChecked_2}}data-checked="false"{{/isChecked_2}} {{^isRefined_2}}data-refined="false"{{/isRefined_2}}
+                                                            >
+                                                                <input type="checkbox" class="facet-checkbox" {{#isChecked_2}}checked="checked"{{/isChecked_2}}/> {{ name }}
+                                                            </a>
+                                                        </li>
+                                                    {{/show_2}}
+                                                {{/subs}}
+                                            {{/isChecked_1}}
+                                            </ul>
+                                        </li>
+                                    {{/show_1}}
+                                {{/subs}}
+                            {{/isChecked_0}}
+                        </ul>
+                    </li>
+                {{/show_0}}
+            {{/cats}}
+        </ul>
+    </div>
+</script>
+
+<script type="text/template" id="facets-template">
+    <div class="facet">
+        <h5 class="is-facet-header gotham-light">{{ title }}</h5>
+        <ul class="lvl0">
+            {{#values}}
+                <li>
+                    <a class="facet-link toggle-refine {{#disjunctive}}facet-disjunctive{{/disjunctive}} {{#isRefined}}facet-refined{{/isRefined}} gotham-light" data-facet="{{ facet }}" data-value="{{ name }}">
+                        <input type="checkbox" class="facet-checkbox" {{#isRefined}}checked="checked"{{/isRefined}}/> {{ name }}
+                    </a>
+                </li>
+            {{/values}}
+        </ul>
+    </div>
+</script>
+</div>
+<div class="main-container container">
+<h1 id="productListHeading">
+<a href="/categories/105">Raspberry Pi</a> / Pi Zero </h1>
+<script src="/includes/templates/adafruit2013/jscript/adafruit.scroll.js" type="text/javascript"></script>
+<div id="productListing" class="cat-listing ">
+<script>
+ga('ec:addImpression', {
+        'id': '1099',
+        'name': "P1099", 'position': '0' });
+ga('ec:addImpression', {
+        'id': '2692',
+        'name': "P2692", 'position': '1' });
+ga('ec:addImpression', {
+        'id': '2816',
+        'name': "P2816", 'position': '2' });
+ga('ec:addImpression', {
+        'id': '2817',
+        'name': "P2817", 'position': '3' });
+ga('ec:addImpression', {
+        'id': '2819',
+        'name': "P2819", 'position': '4' });
+ga('ec:addImpression', {
+        'id': '2820',
+        'name': "P2820", 'position': '5' });
+ga('ec:addImpression', {
+        'id': '2822',
+        'name': "P2822", 'position': '6' });
+ga('ec:addImpression', {
+        'id': '2823',
+        'name': "P2823", 'position': '7' });
+ga('ec:addImpression', {
+        'id': '2883',
+        'name': "P2883", 'position': '8' });
+ga('ec:addImpression', {
+        'id': '2885',
+        'name': "P2885", 'position': '9' });
+ga('ec:addImpression', {
+        'id': '2910',
+        'name': "P2910", 'position': '10' });
+ga('ec:addImpression', {
+        'id': '2992',
+        'name': "P2992", 'position': '11' });
+ga('ec:addImpression', {
+        'id': '3003',
+        'name': "P3003", 'position': '12' });
+ga('ec:addImpression', {
+        'id': '3004',
+        'name': "P3004", 'position': '13' });
+ga('ec:addImpression', {
+        'id': '3005',
+        'name': "P3005", 'position': '14' });
+ga('ec:addImpression', {
+        'id': '3016',
+        'name': "P3016", 'position': '15' });
+ga('ec:addImpression', {
+        'id': '3017',
+        'name': "P3017", 'position': '16' });
+ga('ec:addImpression', {
+        'id': '3018',
+        'name': "P3018", 'position': '17' });
+ga('ec:addImpression', {
+        'id': '3048',
+        'name': "P3048", 'position': '18' });
+ga('ec:addImpression', {
+        'id': '3157',
+        'name': "P3157", 'position': '19' });
+
+</script>
+<script>
+  ga('send', 'pageview');
+</script>
+<hr/>
+<div class="row product-listing">
+<div class="img-container col-lg-3 col-md-3 col-sm-3 col-xs-6">
+<a href="/products/2816" class="ec_click_product" data-pid="2816" data-name="Raspberry Pi Zero Starter Pack - Includes Pi Zero v1.3" data-position="1" data-listname="Product Listing category">
+<img class="img-responsive" src="https://cdn-shop.adafruit.com/310x233/2816-08.jpg" alt="Raspberry Pi Zero Starter Pack - Includes Pi Zero v1.3"/>
+</a>
+</div>
+<div class="product-listing-right col-lg-9 col-md-9 col-sm-9 col-xs-6">
+<div class="product-listing-text-wrapper">
+<h1><a href="/products/2816" class="ec_click_product" data-pid="2816" data-name="Raspberry Pi Zero Starter Pack - Includes Pi Zero v1.3" data-position="1" data-listname="Product Listing category">
+Raspberry Pi Zero Starter Pack - Includes Pi Zero v1.3</a></h1>
+<div class="product_id">PRODUCT ID: 2816</div>
+<div class="product-description clearfix hidden-sm hidden-xs hidden-lg">
+Note: Due to popular demand, there might be some delay in shipping products containing Pi Zero! Note:&nbsp; As of Monday, May 16th, this product is... </div>
+<div class="product-description clearfix hidden-sm hidden-xs hidden-md">
+Note: Due to popular demand, there might be some delay in shipping products containing Pi Zero! Note:&nbsp; As of Monday, May 16th, this product is now shipping with Version 1.3 of the Pi Zero! Remember those cereal commercials that would always say,&nbsp;"part of a complete breakfast"? Well the Pi Zero's a lot like that bowl of cereal - while it's great&nbsp;on its own, you&nbsp;need a lot of accessories to make it a complete meal.&nbsp; The... </div>
+</div>
+<div class="product-info clearfix row">
+<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 hidden-xs">
+<a href="products/2816" class="ec_click_product" data-pid="2816" data-name="Raspberry Pi Zero Starter Pack - Includes Pi Zero v1.3" data-position="1" data-listname="Product Listing (notify) category">
+<button class="blue-button-large">NOTIFY ME</button>
+</a>
+</div>
+<div class="price-stock col-lg-8 col-md-6 col-sm-6 col-xs-12">
+<div class="price"><div class=""><div class="sale-discount"></div>
+<div><span class="normal-price">$54.95</span>
+<span class="special-price"></span></div></div></div>
+<div class="stock">
+<span class='out-of-stock'>OUT OF STOCK</span> </div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="row top-twenty visible-xs">
+<div class="col-xs-12">
+<a href="products/2816" class="ec_click_product" data-pid="2816" data-name="Raspberry Pi Zero Starter Pack - Includes Pi Zero v1.3" data-position="1" data-listname="Product Listing (more info) category">
+<div class="mobile-button-row">
+<button class="blue-button-large">NOTIFY ME</button>
+</div>
+</a>
+</div>
+</div>
+<script>ga('ec:addImpression', {
+        'id': '2816',
+        'name': "P2816", 'position': '1' });
+ </script>
+<hr/>
+<div class="row product-listing">
+<div class="img-container col-lg-3 col-md-3 col-sm-3 col-xs-6">
+<a href="/products/2817" class="ec_click_product" data-pid="2817" data-name="Raspberry Pi Zero Budget Pack - Includes Pi Zero v1.3" data-position="3" data-listname="Product Listing category">
+<img class="img-responsive" src="https://cdn-shop.adafruit.com/310x233/2817-03.jpg" alt="Raspberry Pi Zero Budget Pack - Includes Pi Zero v1.3"/>
+</a>
+</div>
+<div class="product-listing-right col-lg-9 col-md-9 col-sm-9 col-xs-6">
+<div class="product-listing-text-wrapper">
+<h1><a href="/products/2817" class="ec_click_product" data-pid="2817" data-name="Raspberry Pi Zero Budget Pack - Includes Pi Zero v1.3" data-position="3" data-listname="Product Listing category">
+Raspberry Pi Zero Budget Pack - Includes Pi Zero v1.3</a></h1>
+<div class="product_id">PRODUCT ID: 2817</div>
+<div class="product-description clearfix hidden-sm hidden-xs hidden-lg">
+Note: Due to popular demand, there might be some delay in shipping products containing Pi Zero! Note: As of Monday, May 16th, this product is now... </div>
+<div class="product-description clearfix hidden-sm hidden-xs hidden-md">
+Note: Due to popular demand, there might be some delay in shipping products containing Pi Zero! Note: As of Monday, May 16th, this product is now shipping with Version 1.3 of the Pi Zero! Remember those cereal commercials that would always say,&nbsp;"part of a complete breakfast"? Well the Pi Zero's a lot like that bowl of cereal - while it's great&nbsp;on its own, you&nbsp;need a lot of accessories to make it a complete meal. The Pi Zero Budget... </div>
+</div>
+<div class="product-info clearfix row">
+<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 hidden-xs">
+<a href="products/2817" class="ec_click_product" data-pid="2817" data-name="Raspberry Pi Zero Budget Pack - Includes Pi Zero v1.3" data-position="3" data-listname="Product Listing (notify) category">
+<button class="blue-button-large">NOTIFY ME</button>
+</a>
+</div>
+<div class="price-stock col-lg-8 col-md-6 col-sm-6 col-xs-12">
+<div class="price"><div class=""><div class="sale-discount"></div>
+<div><span class="normal-price">$24.95</span>
+<span class="special-price"></span></div></div></div>
+<div class="stock">
+<span class='out-of-stock'>OUT OF STOCK</span> </div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="row top-twenty visible-xs">
+<div class="col-xs-12">
+<a href="products/2817" class="ec_click_product" data-pid="2817" data-name="Raspberry Pi Zero Budget Pack - Includes Pi Zero v1.3" data-position="3" data-listname="Product Listing (more info) category">
+<div class="mobile-button-row">
+<button class="blue-button-large">NOTIFY ME</button>
+</div>
+</a>
+</div>
+</div>
+<script>ga('ec:addImpression', {
+        'id': '2817',
+        'name': "P2817", 'position': '3' });
+ </script>
+<hr/>
+<div class="row product-listing">
+<div class="img-container col-lg-3 col-md-3 col-sm-3 col-xs-6">
+<a href="/products/2883" class="ec_click_product" data-pid="2883" data-name="Adafruit Pi Protector for Raspberry Pi Model Zero" data-position="5" data-listname="Product Listing category">
+<img class="img-responsive" src="https://cdn-shop.adafruit.com/310x233/2883-05.jpg" alt="Adafruit Pi Protector for Raspberry Pi Model Zero"/>
+</a>
+</div>
+<div class="product-listing-right col-lg-9 col-md-9 col-sm-9 col-xs-6">
+<div class="product-listing-text-wrapper">
+<h1><a href="/products/2883" class="ec_click_product" data-pid="2883" data-name="Adafruit Pi Protector for Raspberry Pi Model Zero" data-position="5" data-listname="Product Listing category">
+Adafruit Pi Protector for Raspberry Pi Model Zero</a></h1>
+<div class="product_id">PRODUCT ID: 2883</div>
+<div class="product-description clearfix hidden-sm hidden-xs hidden-lg">
+Now that we're carrying the Pi Zero, &nbsp; PaintYourDragon is back with another gorgeous laser-cut masterpiece. This time he's taken a pass at a Pi... </div>
+<div class="product-description clearfix hidden-sm hidden-xs hidden-md">
+Now that we're carrying the Pi Zero, &nbsp; PaintYourDragon is back with another gorgeous laser-cut masterpiece. This time he's taken a pass at a Pi Protector for Raspberry Pi Zero, not quite a full case, it will keep your Pi Zero safe and svelte. Keep your Raspberry Pi® Zero&nbsp;computer tidy and safe in this lovely clear acrylic enclosure. We designed this&nbsp; simple protector to be beautiful, easy to assemble and perfect for any use (but... </div>
+</div>
+<div class="product-info clearfix row">
+<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 hidden-xs">
+<form action="added" method="post">
+<input type="hidden" name="action" value="add_product"/>
+<input type="hidden" name="pid" value="2883"/>
+<input type="hidden" name="qty" value="1"/>
+<input type="hidden" name="source_page" value="category"/>
+<input type="hidden" name="source_id" value="813"/>
+<button type="submit" class="blue-button-large" data-pid="2883" data-qty="1">ADD TO CART</button>
+</form>
+</div>
+<div class="price-stock col-lg-8 col-md-6 col-sm-6 col-xs-12">
+<div class="price"><div class=""><div class="sale-discount"></div>
+<div><span class="normal-price">$4.95</span>
+<span class="special-price"></span></div></div></div>
+<div class="stock">
+IN STOCK </div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="row top-twenty visible-xs">
+<div class="col-xs-12">
+<form action="added" method="post">
+<input type="hidden" name="action" value="add_product"/>
+<input type="hidden" name="pid" value="2883"/>
+<input type="hidden" name="qty" value="1"/>
+<div class="mobile-button-row">
+<button type="submit" class="blue-button-large add_to_cart_ec" data-pid="2883" data-qty="1" data-name="" data-crumbs="">ADD TO CART</button>
+</div>
+</form>
+</div>
+</div>
+<script>ga('ec:addImpression', {
+        'id': '2883',
+        'name': "P2883", 'position': '5' });
+ </script>
+<hr/>
+<div class="row product-listing">
+<div class="img-container col-lg-3 col-md-3 col-sm-3 col-xs-6">
+<a href="/products/2822"
+			class="ec_click_product"
+			data-pid="2822"
+			data-name="Break-away 0.1" 2x20-pin Strip Dual Male Header"
+			data-position="7"
+			data-listname="Product Listing category">
+									<img class="img-responsive" src="https://cdn-shop.adafruit.com/310x233/2822-00.jpg" alt="Break-away 0.1" 2x20-pin Strip Dual Male Header" />
+							</a>
+		</div>
+		<div class="product-listing-right col-lg-9 col-md-9 col-sm-9 col-xs-6">
+			<div class="product-listing-text-wrapper">
+				<h1><a href="/products/2822"
+				class="ec_click_product"
+				data-pid="2822"
+				data-name="Break-away 0.1" 2x20-pin Strip Dual Male Header"
+				data-position="7"
+				data-listname="Product Listing category">
+				Break-away 0.1" 2x20-pin Strip Dual Male Header</a></h1>
+				<div class="product_id">PRODUCT ID: 2822</div>
+				<div class="product-description clearfix hidden-sm hidden-xs hidden-lg">
+					If we could eat headers, we&#39;d have them for breakfast, lunch, and dinner. &nbsp;But we can&#39;t :( So&nbsp;we&#39;re making the best of it and...				</div>
+				<div class="product-description clearfix hidden-sm hidden-xs hidden-md">
+					If we could eat headers, we&#39;d have them for breakfast, lunch, and dinner. &nbsp;But we can&#39;t :( So&nbsp;we&#39;re making the best of it and selling them! This 2x20-pin strip&nbsp;male header is a great way to add pins to 2x20 0.1&quot; holes in a PCB. &nbsp;They&#39;re also&nbsp;perfect companion piece to our 2x20-pin right-angle female header.				</div>
+			</div>
+			<div class="product-info clearfix row">
+				<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 hidden-xs">
+											<form action="added" method="post">
+							<input type="hidden" name="action" value="add_product" />
+							<input type="hidden" name="pid" value="2822" />
+							<input type="hidden" name="qty" value="1" />
+							<input type="hidden" name="source_page" value="category" />
+							<input type="hidden" name="source_id" value="813" />
+							<button type="submit"  class="blue-button-large" data-pid="2822" data-qty="1">ADD TO CART</button>
+						</form>
+										</div>
+				<div class="price-stock col-lg-8 col-md-6 col-sm-6 col-xs-12">
+					<div class="price"><div class=""><div class="sale-discount"></div>
+                                 <div><span class="normal-price">$0.95</span>
+                                 <span class="special-price"></span></div></div></div>
+					<div class="stock">
+						IN STOCK					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- mobile view -->
+	<div class="row top-twenty visible-xs">
+		<div class="col-xs-12">
+							<form action="added" method="post">
+					<input type="hidden" name="action" value="add_product" />
+					<input type="hidden" name="pid" value="2822" />
+					<input type="hidden" name="qty" value="1" />
+					<div class="mobile-button-row">
+					<button type="submit"  class="blue-button-large add_to_cart_ec"
+					data-pid="2822"
+					data-qty="1"
+					data-name=""
+					data-crumbs=""
+					>ADD TO CART</button>
+					</div>
+				</form>
+						</div>
+	</div>
+
+
+<script>ga('ec:addImpression', {
+        'id': '2822',
+        'name': "P2822", 'position': '7' });
+ </script>
+	<hr />
+	<div class="row product-listing">
+		<div class="img-container col-lg-3 col-md-3 col-sm-3 col-xs-6">
+			<a href="/products/2823"
+			class="ec_click_product"
+			data-pid="2823"
+			data-name="0.1" 2x20-pin Strip Right Angle Female Header"
+			data-position="9"
+			data-listname="Product Listing category">
+									<img class="img-responsive" src="https://cdn-shop.adafruit.com/310x233/2823-00.jpg" alt="0.1" 2x20-pin Strip Right Angle Female Header" />
+							</a>
+		</div>
+		<div class="product-listing-right col-lg-9 col-md-9 col-sm-9 col-xs-6">
+			<div class="product-listing-text-wrapper">
+				<h1><a href="/products/2823"
+				class="ec_click_product"
+				data-pid="2823"
+				data-name="0.1" 2x20-pin Strip Right Angle Female Header"
+				data-position="9"
+				data-listname="Product Listing category">
+				0.1" 2x20-pin Strip Right Angle Female Header</a></h1>
+				<div class="product_id">PRODUCT ID: 2823</div>
+				<div class="product-description clearfix hidden-sm hidden-xs hidden-lg">
+					If we could eat headers we&#39;d have them for breakfast, lunch, and dinner. &nbsp;But we can&#39;t :( So&nbsp;we&#39;re making the best of it and...				</div>
+				<div class="product-description clearfix hidden-sm hidden-xs hidden-md">
+					If we could eat headers we&#39;d have them for breakfast, lunch, and dinner. &nbsp;But we can&#39;t :( So&nbsp;we&#39;re making the best of it and selling them! This 2x20-pin strip, right-angle female header is a perfect companion piece to our 2x20-pin Dual Male Header. &nbsp;It&#39;s a great way to add right-angle capability to a 2x20 pin circuit board either by attaching the right-angle male headers to the board and having a right-angle female...				</div>
+			</div>
+			<div class="product-info clearfix row">
+				<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 hidden-xs">
+											<form action="added" method="post">
+							<input type="hidden" name="action" value="add_product" />
+							<input type="hidden" name="pid" value="2823" />
+							<input type="hidden" name="qty" value="1" />
+							<input type="hidden" name="source_page" value="category" />
+							<input type="hidden" name="source_id" value="813" />
+							<button type="submit"  class="blue-button-large" data-pid="2823" data-qty="1">ADD TO CART</button>
+						</form>
+										</div>
+				<div class="price-stock col-lg-8 col-md-6 col-sm-6 col-xs-12">
+					<div class="price"><div class=""><div class="sale-discount"></div>
+                                 <div><span class="normal-price">$1.50</span>
+                                 <span class="special-price"></span></div></div></div>
+					<div class="stock">
+						IN STOCK					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- mobile view -->
+	<div class="row top-twenty visible-xs">
+		<div class="col-xs-12">
+							<form action="added" method="post">
+					<input type="hidden" name="action" value="add_product" />
+					<input type="hidden" name="pid" value="2823" />
+					<input type="hidden" name="qty" value="1" />
+					<div class="mobile-button-row">
+					<button type="submit"  class="blue-button-large add_to_cart_ec"
+					data-pid="2823"
+					data-qty="1"
+					data-name=""
+					data-crumbs=""
+					>ADD TO CART</button>
+					</div>
+				</form>
+						</div>
+	</div>
+
+
+<script>ga('ec:addImpression', {
+        'id': '2823',
+        'name': "P2823", 'position': '9' });
+ </script>
+	<hr />
+	<div class="row product-listing">
+		<div class="img-container col-lg-3 col-md-3 col-sm-3 col-xs-6">
+			<a href="/products/2819"
+			class="ec_click_product"
+			data-pid="2819"
+			data-name="Mini HDMI Plug to Standard HDMI Jack Adapter"
+			data-position="11"
+			data-listname="Product Listing category">
+									<img class="img-responsive" src="https://cdn-shop.adafruit.com/310x233/2819-00.jpg" alt="Mini HDMI Plug to Standard HDMI Jack Adapter" />
+							</a>
+		</div>
+		<div class="product-listing-right col-lg-9 col-md-9 col-sm-9 col-xs-6">
+			<div class="product-listing-text-wrapper">
+				<h1><a href="/products/2819"
+				class="ec_click_product"
+				data-pid="2819"
+				data-name="Mini HDMI Plug to Standard HDMI Jack Adapter"
+				data-position="11"
+				data-listname="Product Listing category">
+				Mini HDMI Plug to Standard HDMI Jack Adapter</a></h1>
+				<div class="product_id">PRODUCT ID: 2819</div>
+				<div class="product-description clearfix hidden-sm hidden-xs hidden-lg">
+					What an adorable little pug!&nbsp;Sorry - plug! What an adorable mini HDMI to HDMI plug. &nbsp;We find this plug adapter really helpful....				</div>
+				<div class="product-description clearfix hidden-sm hidden-xs hidden-md">
+					What an adorable little pug!&nbsp;Sorry - plug! What an adorable mini HDMI to HDMI plug. &nbsp;We find this plug adapter really helpful. &nbsp;It&#39;s a great way to convert any mini HDMI plug to a normal HDMI plug and...that&#39;s about it! Now you can use any of your classic HDMI cables. Simple. &nbsp;Useful. &nbsp;Adorable. Note:&nbsp; This product may come in black or white. &nbsp;They are functionally the same. &nbsp;We cannot control...				</div>
+			</div>
+			<div class="product-info clearfix row">
+				<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 hidden-xs">
+											<form action="added" method="post">
+							<input type="hidden" name="action" value="add_product" />
+							<input type="hidden" name="pid" value="2819" />
+							<input type="hidden" name="qty" value="1" />
+							<input type="hidden" name="source_page" value="category" />
+							<input type="hidden" name="source_id" value="813" />
+							<button type="submit"  class="blue-button-large" data-pid="2819" data-qty="1">ADD TO CART</button>
+						</form>
+										</div>
+				<div class="price-stock col-lg-8 col-md-6 col-sm-6 col-xs-12">
+					<div class="price"><div class=""><div class="sale-discount"></div>
+                                 <div><span class="normal-price">$2.95</span>
+                                 <span class="special-price"></span></div></div></div>
+					<div class="stock">
+						IN STOCK					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- mobile view -->
+	<div class="row top-twenty visible-xs">
+		<div class="col-xs-12">
+							<form action="added" method="post">
+					<input type="hidden" name="action" value="add_product" />
+					<input type="hidden" name="pid" value="2819" />
+					<input type="hidden" name="qty" value="1" />
+					<div class="mobile-button-row">
+					<button type="submit"  class="blue-button-large add_to_cart_ec"
+					data-pid="2819"
+					data-qty="1"
+					data-name=""
+					data-crumbs=""
+					>ADD TO CART</button>
+					</div>
+				</form>
+						</div>
+	</div>
+
+
+<script>ga('ec:addImpression', {
+        'id': '2819',
+        'name': "P2819", 'position': '11' });
+ </script>
+	<hr />
+	<div class="row product-listing">
+		<div class="img-container col-lg-3 col-md-3 col-sm-3 col-xs-6">
+			<a href="/products/1099"
+			class="ec_click_product"
+			data-pid="1099"
+			data-name="USB OTG Host Cable - MicroB OTG male to A female"
+			data-position="13"
+			data-listname="Product Listing category">
+									<img class="img-responsive" src="https://cdn-shop.adafruit.com/310x233/1099-00.jpg" alt="USB OTG Host Cable - MicroB OTG male to A female" />
+							</a>
+		</div>
+		<div class="product-listing-right col-lg-9 col-md-9 col-sm-9 col-xs-6">
+			<div class="product-listing-text-wrapper">
+				<h1><a href="/products/1099"
+				class="ec_click_product"
+				data-pid="1099"
+				data-name="USB OTG Host Cable - MicroB OTG male to A female"
+				data-position="13"
+				data-listname="Product Listing category">
+				USB OTG Host Cable - MicroB OTG male to A female</a></h1>
+				<div class="product_id">PRODUCT ID: 1099</div>
+				<div class="product-description clearfix hidden-sm hidden-xs hidden-lg">
+					This cable looks like a USB micro cable but it isn't! Instead of a USB A Plug, it has a USB A Socket on the end. This cable is designed for use with...				</div>
+				<div class="product-description clearfix hidden-sm hidden-xs hidden-md">
+					This cable looks like a USB micro cable but it isn't! Instead of a USB A Plug, it has a USB A Socket on the end. This cable is designed for use with OTG (On the Go) host devices (like the Arduino Due or many tablets) so you can connect a mouse, keyboard, or any other USB device. You'll still need to have drivers on the device, this cable is just a cable and contains no microcontroller or electronics inside. Approximately 6" long from end to end....				</div>
+			</div>
+			<div class="product-info clearfix row">
+				<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 hidden-xs">
+											<a href="products/1099"
+						class="ec_click_product"
+						data-pid="1099"
+						data-name="USB OTG Host Cable - MicroB OTG male to A female"
+						data-position="13"
+						data-listname="Product Listing (notify) category">
+							<button  class="blue-button-large" >NOTIFY ME</button>
+						</a>
+										</div>
+				<div class="price-stock col-lg-8 col-md-6 col-sm-6 col-xs-12">
+					<div class="price"><div class=""><div class="sale-discount"></div>
+                                 <div><span class="normal-price">$2.50</span>
+                                 <span class="special-price"></span></div></div></div>
+					<div class="stock">
+						<span class='out-of-stock'>COMING SOON</span>					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- mobile view -->
+	<div class="row top-twenty visible-xs">
+		<div class="col-xs-12">
+							<a href="products/1099"
+				class="ec_click_product"
+				data-pid="1099"
+				data-name="USB OTG Host Cable - MicroB OTG male to A female"
+				data-position="13"
+				data-listname="Product Listing (more info) category">
+					<div class="mobile-button-row">
+						<button class="blue-button-large">NOTIFY ME</button>
+					</div>
+				</a>
+						</div>
+	</div>
+
+
+<script>ga('ec:addImpression', {
+        'id': '1099',
+        'name': "P1099", 'position': '13' });
+ </script>
+	<hr />
+	<div class="row product-listing">
+		<div class="img-container col-lg-3 col-md-3 col-sm-3 col-xs-6">
+			<a href="/products/2692"
+			class="ec_click_product"
+			data-pid="2692"
+			data-name="8GB Class 10 SD/MicroSD Memory Card - SD Adapter Included"
+			data-position="15"
+			data-listname="Product Listing category">
+									<img class="img-responsive" src="https://cdn-shop.adafruit.com/310x233/2692-01.jpg" alt="8GB Class 10 SD/MicroSD Memory Card - SD Adapter Included" />
+							</a>
+		</div>
+		<div class="product-listing-right col-lg-9 col-md-9 col-sm-9 col-xs-6">
+			<div class="product-listing-text-wrapper">
+				<h1><a href="/products/2692"
+				class="ec_click_product"
+				data-pid="2692"
+				data-name="8GB Class 10 SD/MicroSD Memory Card - SD Adapter Included"
+				data-position="15"
+				data-listname="Product Listing category">
+				8GB Class 10 SD/MicroSD Memory Card - SD Adapter Included</a></h1>
+				<div class="product_id">PRODUCT ID: 2692</div>
+				<div class="product-description clearfix hidden-sm hidden-xs hidden-lg">
+					Add mega-storage in a jiffy using this 8 GB micro-SD card. It comes with a SD adapter so you can use it with any of our shields or adapters!...				</div>
+				<div class="product-description clearfix hidden-sm hidden-xs hidden-md">
+					Add mega-storage in a jiffy using this 8 GB micro-SD card. It comes with a SD adapter so you can use it with any of our shields or adapters! Preformatted to FAT so it works out of the box with our projects. Tested and works great with our Wave shield, Data logger shield and GPS shield, and micro-SD adapter as well as any other device in the Adafruit shop that uses (micro)-SD cards! Also perfect for use with Raspberry Pi computers, just burn the...				</div>
+			</div>
+			<div class="product-info clearfix row">
+				<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 hidden-xs">
+											<form action="added" method="post">
+							<input type="hidden" name="action" value="add_product" />
+							<input type="hidden" name="pid" value="2692" />
+							<input type="hidden" name="qty" value="1" />
+							<input type="hidden" name="source_page" value="category" />
+							<input type="hidden" name="source_id" value="813" />
+							<button type="submit"  class="blue-button-large" data-pid="2692" data-qty="1">ADD TO CART</button>
+						</form>
+										</div>
+				<div class="price-stock col-lg-8 col-md-6 col-sm-6 col-xs-12">
+					<div class="price"><div class=""><div class="sale-discount"></div>
+                                 <div><span class="normal-price">$9.95</span>
+                                 <span class="special-price"></span></div></div></div>
+					<div class="stock">
+						IN STOCK					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- mobile view -->
+	<div class="row top-twenty visible-xs">
+		<div class="col-xs-12">
+							<form action="added" method="post">
+					<input type="hidden" name="action" value="add_product" />
+					<input type="hidden" name="pid" value="2692" />
+					<input type="hidden" name="qty" value="1" />
+					<div class="mobile-button-row">
+					<button type="submit"  class="blue-button-large add_to_cart_ec"
+					data-pid="2692"
+					data-qty="1"
+					data-name=""
+					data-crumbs=""
+					>ADD TO CART</button>
+					</div>
+				</form>
+						</div>
+	</div>
+
+
+<script>ga('ec:addImpression', {
+        'id': '2692',
+        'name': "P2692", 'position': '15' });
+ </script>
+	<hr />
+	<div class="row product-listing">
+		<div class="img-container col-lg-3 col-md-3 col-sm-3 col-xs-6">
+			<a href="/products/2885"
+			class="ec_click_product"
+			data-pid="2885"
+			data-name="Raspberry Pi Zero - Version v1.3"
+			data-position="17"
+			data-listname="Product Listing category">
+									<img class="img-responsive" src="https://cdn-shop.adafruit.com/310x233/2885-06.jpg" alt="Raspberry Pi Zero - Version v1.3" />
+							</a>
+		</div>
+		<div class="product-listing-right col-lg-9 col-md-9 col-sm-9 col-xs-6">
+			<div class="product-listing-text-wrapper">
+				<h1><a href="/products/2885"
+				class="ec_click_product"
+				data-pid="2885"
+				data-name="Raspberry Pi Zero - Version v1.3"
+				data-position="17"
+				data-listname="Product Listing category">
+				Raspberry Pi Zero - Version v1.3</a></h1>
+				<div class="product_id">PRODUCT ID: 2885</div>
+				<div class="product-description clearfix hidden-sm hidden-xs hidden-lg">
+					Note: Due to popular demand, there might be some delay in shipping products containing Pi Zero! Note : As of May 16th, 3 A.M. EDT Adafruit is now...				</div>
+				<div class="product-description clearfix hidden-sm hidden-xs hidden-md">
+					Note: Due to popular demand, there might be some delay in shipping products containing Pi Zero! Note : As of May 16th, 3 A.M. EDT Adafruit is now selling version 1.3 of the Pi Zero. &nbsp;Version 1.3 is updated to include a camera port. &nbsp; The new Pi Zero camera port only works with a Raspberry Pi Zero Camera Cable.&nbsp; It DOES NOT work with a standard Raspberry Pi Camera cable. We also have a budget pack and starter pack with all the...				</div>
+			</div>
+			<div class="product-info clearfix row">
+				<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 hidden-xs">
+											<a href="products/2885"
+						class="ec_click_product"
+						data-pid="2885"
+						data-name="Raspberry Pi Zero - Version v1.3"
+						data-position="17"
+						data-listname="Product Listing (notify) category">
+							<button  class="blue-button-large" >NOTIFY ME</button>
+						</a>
+										</div>
+				<div class="price-stock col-lg-8 col-md-6 col-sm-6 col-xs-12">
+					<div class="price"><div class=""><div class="sale-discount"></div>
+                                 <div><span class="normal-price">$5.00</span>
+                                 <span class="special-price"></span></div></div></div>
+					<div class="stock">
+						<span class='out-of-stock'>OUT OF STOCK</span>					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- mobile view -->
+	<div class="row top-twenty visible-xs">
+		<div class="col-xs-12">
+							<a href="products/2885"
+				class="ec_click_product"
+				data-pid="2885"
+				data-name="Raspberry Pi Zero - Version v1.3"
+				data-position="17"
+				data-listname="Product Listing (more info) category">
+					<div class="mobile-button-row">
+						<button class="blue-button-large">NOTIFY ME</button>
+					</div>
+				</a>
+						</div>
+	</div>
+
+
+<script>ga('ec:addImpression', {
+        'id': '2885',
+        'name': "P2885", 'position': '17' });
+ </script>
+	<hr />
+	<div class="row product-listing">
+		<div class="img-container col-lg-3 col-md-3 col-sm-3 col-xs-6">
+			<a href="/products/3157"
+			class="ec_click_product"
+			data-pid="3157"
+			data-name="Raspberry Pi Zero v1.3 Camera Cable"
+			data-position="19"
+			data-listname="Product Listing category">
+									<img class="img-responsive" src="https://cdn-shop.adafruit.com/310x233/3157-03.jpg" alt="Raspberry Pi Zero v1.3 Camera Cable" />
+							</a>
+		</div>
+		<div class="product-listing-right col-lg-9 col-md-9 col-sm-9 col-xs-6">
+			<div class="product-listing-text-wrapper">
+				<h1><a href="/products/3157"
+				class="ec_click_product"
+				data-pid="3157"
+				data-name="Raspberry Pi Zero v1.3 Camera Cable"
+				data-position="19"
+				data-listname="Product Listing category">
+				Raspberry Pi Zero v1.3 Camera Cable</a></h1>
+				<div class="product_id">PRODUCT ID: 3157</div>
+				<div class="product-description clearfix hidden-sm hidden-xs hidden-lg">
+					This camera cable is specifically designed to work with the Raspberry Pi Zero - Version 1.3! Just plug it into your Pi Zero's camera port and then...				</div>
+				<div class="product-description clearfix hidden-sm hidden-xs hidden-md">
+					This camera cable is specifically designed to work with the Raspberry Pi Zero - Version 1.3! Just plug it into your Pi Zero's camera port and then the other end into one of the official Pi Cameras for photo &amp; video joy. The Raspberry Pi Zero is NOT included in this product! If you're looking to buy a Raspberry Pi Zero, check out our selection of packs here!				</div>
+			</div>
+			<div class="product-info clearfix row">
+				<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 hidden-xs">
+											<form action="added" method="post">
+							<input type="hidden" name="action" value="add_product" />
+							<input type="hidden" name="pid" value="3157" />
+							<input type="hidden" name="qty" value="1" />
+							<input type="hidden" name="source_page" value="category" />
+							<input type="hidden" name="source_id" value="813" />
+							<button type="submit"  class="blue-button-large" data-pid="3157" data-qty="1">ADD TO CART</button>
+						</form>
+										</div>
+				<div class="price-stock col-lg-8 col-md-6 col-sm-6 col-xs-12">
+					<div class="price"><div class=""><div class="sale-discount"></div>
+                                 <div><span class="normal-price">$5.95</span>
+                                 <span class="special-price"></span></div></div></div>
+					<div class="stock">
+						IN STOCK					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- mobile view -->
+	<div class="row top-twenty visible-xs">
+		<div class="col-xs-12">
+							<form action="added" method="post">
+					<input type="hidden" name="action" value="add_product" />
+					<input type="hidden" name="pid" value="3157" />
+					<input type="hidden" name="qty" value="1" />
+					<div class="mobile-button-row">
+					<button type="submit"  class="blue-button-large add_to_cart_ec"
+					data-pid="3157"
+					data-qty="1"
+					data-name=""
+					data-crumbs=""
+					>ADD TO CART</button>
+					</div>
+				</form>
+						</div>
+	</div>
+
+
+<script>ga('ec:addImpression', {
+        'id': '3157',
+        'name': "P3157", 'position': '19' });
+ </script>
+	<hr />
+	<div class="row product-listing">
+		<div class="img-container col-lg-3 col-md-3 col-sm-3 col-xs-6">
+			<a href="/products/2910"
+			class="ec_click_product"
+			data-pid="2910"
+			data-name="Tiny OTG Adapter - USB Micro to USB"
+			data-position="21"
+			data-listname="Product Listing category">
+									<img class="img-responsive" src="https://cdn-shop.adafruit.com/310x233/2910-01.jpg" alt="Tiny OTG Adapter - USB Micro to USB" />
+							</a>
+		</div>
+		<div class="product-listing-right col-lg-9 col-md-9 col-sm-9 col-xs-6">
+			<div class="product-listing-text-wrapper">
+				<h1><a href="/products/2910"
+				class="ec_click_product"
+				data-pid="2910"
+				data-name="Tiny OTG Adapter - USB Micro to USB"
+				data-position="21"
+				data-listname="Product Listing category">
+				Tiny OTG Adapter - USB Micro to USB</a></h1>
+				<div class="product_id">PRODUCT ID: 2910</div>
+				<div class="product-description clearfix hidden-sm hidden-xs hidden-lg">
+					This super slim, super tiny, and super cute Micro-B&nbsp;to USB on-the-go adapter is so slim, tiny, and cute that we&#39;d pinch its cheeks if it was...				</div>
+				<div class="product-description clearfix hidden-sm hidden-xs hidden-md">
+					This super slim, super tiny, and super cute Micro-B&nbsp;to USB on-the-go adapter is so slim, tiny, and cute that we&#39;d pinch its cheeks if it was big enough to have cheeks. &nbsp;At just ~15.5mm long, ~11.3mm wide, and ~2mm, this really is the tiniest little adapter we&#39;ve probably ever seen. But don&#39;t let the size fool you - this is a perfect and easy way to turn a device or cable with a USB-A to a USB-micro, great for use with OTG...				</div>
+			</div>
+			<div class="product-info clearfix row">
+				<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 hidden-xs">
+											<form action="added" method="post">
+							<input type="hidden" name="action" value="add_product" />
+							<input type="hidden" name="pid" value="2910" />
+							<input type="hidden" name="qty" value="1" />
+							<input type="hidden" name="source_page" value="category" />
+							<input type="hidden" name="source_id" value="813" />
+							<button type="submit"  class="blue-button-large" data-pid="2910" data-qty="1">ADD TO CART</button>
+						</form>
+										</div>
+				<div class="price-stock col-lg-8 col-md-6 col-sm-6 col-xs-12">
+					<div class="price"><div class=""><div class="sale-discount"></div>
+                                 <div><span class="normal-price">$2.95</span>
+                                 <span class="special-price"></span></div></div></div>
+					<div class="stock">
+						IN STOCK					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- mobile view -->
+	<div class="row top-twenty visible-xs">
+		<div class="col-xs-12">
+							<form action="added" method="post">
+					<input type="hidden" name="action" value="add_product" />
+					<input type="hidden" name="pid" value="2910" />
+					<input type="hidden" name="qty" value="1" />
+					<div class="mobile-button-row">
+					<button type="submit"  class="blue-button-large add_to_cart_ec"
+					data-pid="2910"
+					data-qty="1"
+					data-name=""
+					data-crumbs=""
+					>ADD TO CART</button>
+					</div>
+				</form>
+						</div>
+	</div>
+
+
+<script>ga('ec:addImpression', {
+        'id': '2910',
+        'name': "P2910", 'position': '21' });
+ </script>
+	<hr />
+	<div class="row product-listing">
+		<div class="img-container col-lg-3 col-md-3 col-sm-3 col-xs-6">
+			<a href="/products/2992"
+			class="ec_click_product"
+			data-pid="2992"
+			data-name="Ethernet Hub and USB Hub w/ Micro USB OTG Connector"
+			data-position="23"
+			data-listname="Product Listing category">
+									<img class="img-responsive" src="https://cdn-shop.adafruit.com/310x233/2992-00.jpg" alt="Ethernet Hub and USB Hub w/ Micro USB OTG Connector" />
+							</a>
+		</div>
+		<div class="product-listing-right col-lg-9 col-md-9 col-sm-9 col-xs-6">
+			<div class="product-listing-text-wrapper">
+				<h1><a href="/products/2992"
+				class="ec_click_product"
+				data-pid="2992"
+				data-name="Ethernet Hub and USB Hub w/ Micro USB OTG Connector"
+				data-position="23"
+				data-listname="Product Listing category">
+				Ethernet Hub and USB Hub w/ Micro USB OTG Connector</a></h1>
+				<div class="product_id">PRODUCT ID: 2992</div>
+				<div class="product-description clearfix hidden-sm hidden-xs hidden-lg">
+					One can never have enough socks, or USB ports.&nbsp;Add some more USB and Ethernet&nbsp;capability to your Raspberry Pi Zero or, really, any kind of...				</div>
+				<div class="product-description clearfix hidden-sm hidden-xs hidden-md">
+					One can never have enough socks, or USB ports.&nbsp;Add some more USB and Ethernet&nbsp;capability to your Raspberry Pi Zero or, really, any kind of tablet or computer with an OTG connector with this USB 2.0 and Ethernet Hub ! This handy combo-hub has 3 USB 2.0 ports, and a AX88772A Ethernet transceiver. This chipset is really common and can be used by any Linux, Mac or Windows computer. It&#39;s particularly handy for the Raspberry Pi...				</div>
+			</div>
+			<div class="product-info clearfix row">
+				<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 hidden-xs">
+											<form action="added" method="post">
+							<input type="hidden" name="action" value="add_product" />
+							<input type="hidden" name="pid" value="2992" />
+							<input type="hidden" name="qty" value="1" />
+							<input type="hidden" name="source_page" value="category" />
+							<input type="hidden" name="source_id" value="813" />
+							<button type="submit"  class="blue-button-large" data-pid="2992" data-qty="1">ADD TO CART</button>
+						</form>
+										</div>
+				<div class="price-stock col-lg-8 col-md-6 col-sm-6 col-xs-12">
+					<div class="price"><div class=""><div class="sale-discount"></div>
+                                 <div><span class="normal-price">$14.95</span>
+                                 <span class="special-price"></span></div></div></div>
+					<div class="stock">
+						IN STOCK					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- mobile view -->
+	<div class="row top-twenty visible-xs">
+		<div class="col-xs-12">
+							<form action="added" method="post">
+					<input type="hidden" name="action" value="add_product" />
+					<input type="hidden" name="pid" value="2992" />
+					<input type="hidden" name="qty" value="1" />
+					<div class="mobile-button-row">
+					<button type="submit"  class="blue-button-large add_to_cart_ec"
+					data-pid="2992"
+					data-qty="1"
+					data-name=""
+					data-crumbs=""
+					>ADD TO CART</button>
+					</div>
+				</form>
+						</div>
+	</div>
+
+
+<script>ga('ec:addImpression', {
+        'id': '2992',
+        'name': "P2992", 'position': '23' });
+ </script>
+	<hr />
+	<div class="row product-listing">
+		<div class="img-container col-lg-3 col-md-3 col-sm-3 col-xs-6">
+			<a href="/products/3016"
+			class="ec_click_product"
+			data-pid="3016"
+			data-name="Pimoroni pHAT DAC for Raspberry Pi Zero"
+			data-position="25"
+			data-listname="Product Listing category">
+									<img class="img-responsive" src="https://cdn-shop.adafruit.com/310x233/3016-00.jpg" alt="Pimoroni pHAT DAC for Raspberry Pi Zero" />
+							</a>
+		</div>
+		<div class="product-listing-right col-lg-9 col-md-9 col-sm-9 col-xs-6">
+			<div class="product-listing-text-wrapper">
+				<h1><a href="/products/3016"
+				class="ec_click_product"
+				data-pid="3016"
+				data-name="Pimoroni pHAT DAC for Raspberry Pi Zero"
+				data-position="25"
+				data-listname="Product Listing category">
+				Pimoroni pHAT DAC for Raspberry Pi Zero</a></h1>
+				<div class="product_id">PRODUCT ID: 3016</div>
+				<div class="product-description clearfix hidden-sm hidden-xs hidden-lg">
+					If music be the food of love, play on. But make sure you use this super little pHAT DAC to get the best out of your Raspberry Pi audio! The pHAT DAC...				</div>
+				<div class="product-description clearfix hidden-sm hidden-xs hidden-md">
+					If music be the food of love, play on. But make sure you use this super little pHAT DAC to get the best out of your Raspberry Pi audio! The pHAT DAC provides a super affordable high-quality DAC for the Raspberry Pi.&nbsp;Pumping out 24-bits at 192KHz of audio goodness from the Raspberry Pi&#39;s I2S interface on the 2x20 pin GPIO header. Since it&#39;s digital audio, it sounds really good, much better than the onboard analog audio. The 3.5mm...				</div>
+			</div>
+			<div class="product-info clearfix row">
+				<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 hidden-xs">
+											<form action="added" method="post">
+							<input type="hidden" name="action" value="add_product" />
+							<input type="hidden" name="pid" value="3016" />
+							<input type="hidden" name="qty" value="1" />
+							<input type="hidden" name="source_page" value="category" />
+							<input type="hidden" name="source_id" value="813" />
+							<button type="submit"  class="blue-button-large" data-pid="3016" data-qty="1">ADD TO CART</button>
+						</form>
+										</div>
+				<div class="price-stock col-lg-8 col-md-6 col-sm-6 col-xs-12">
+					<div class="price"><div class=""><div class="sale-discount"></div>
+                                 <div><span class="normal-price">$14.95</span>
+                                 <span class="special-price"></span></div></div></div>
+					<div class="stock">
+						IN STOCK					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- mobile view -->
+	<div class="row top-twenty visible-xs">
+		<div class="col-xs-12">
+							<form action="added" method="post">
+					<input type="hidden" name="action" value="add_product" />
+					<input type="hidden" name="pid" value="3016" />
+					<input type="hidden" name="qty" value="1" />
+					<div class="mobile-button-row">
+					<button type="submit"  class="blue-button-large add_to_cart_ec"
+					data-pid="3016"
+					data-qty="1"
+					data-name=""
+					data-crumbs=""
+					>ADD TO CART</button>
+					</div>
+				</form>
+						</div>
+	</div>
+
+
+<script>ga('ec:addImpression', {
+        'id': '3016',
+        'name': "P3016", 'position': '25' });
+ </script>
+	<hr />
+	<div class="row product-listing">
+		<div class="img-container col-lg-3 col-md-3 col-sm-3 col-xs-6">
+			<a href="/products/3005"
+			class="ec_click_product"
+			data-pid="3005"
+			data-name="Pibow Zero Case for Raspberry Pi Zero"
+			data-position="27"
+			data-listname="Product Listing category">
+									<img class="img-responsive" src="https://cdn-shop.adafruit.com/310x233/3005-00.jpg" alt="Pibow Zero Case for Raspberry Pi Zero" />
+							</a>
+		</div>
+		<div class="product-listing-right col-lg-9 col-md-9 col-sm-9 col-xs-6">
+			<div class="product-listing-text-wrapper">
+				<h1><a href="/products/3005"
+				class="ec_click_product"
+				data-pid="3005"
+				data-name="Pibow Zero Case for Raspberry Pi Zero"
+				data-position="27"
+				data-listname="Product Listing category">
+				Pibow Zero Case for Raspberry Pi Zero</a></h1>
+				<div class="product_id">PRODUCT ID: 3005</div>
+				<div class="product-description clearfix hidden-sm hidden-xs hidden-lg">
+					Crafted out of four transparent acrylic pieces the&nbsp; Pibow Zero Case for Raspberry Pi Zero protects your Pi while showing it off to the world!...				</div>
+				<div class="product-description clearfix hidden-sm hidden-xs hidden-md">
+					Crafted out of four transparent acrylic pieces the&nbsp; Pibow Zero Case for Raspberry Pi Zero protects your Pi while showing it off to the world! Each layer is laser-cut from colorful, lightweight,&nbsp;and high-quality cast acrylic. All of the primary ports and GPIO&nbsp;pins&nbsp;are accessible ( it&nbsp;encloses the micro-SD slot). No tools are necessary for assembly or disassembly and the case comes in at a conveniently lightweight 34g....				</div>
+			</div>
+			<div class="product-info clearfix row">
+				<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 hidden-xs">
+											<a href="products/3005"
+						class="ec_click_product"
+						data-pid="3005"
+						data-name="Pibow Zero Case for Raspberry Pi Zero"
+						data-position="27"
+						data-listname="Product Listing (notify) category">
+							<button  class="blue-button-large" >NOTIFY ME</button>
+						</a>
+										</div>
+				<div class="price-stock col-lg-8 col-md-6 col-sm-6 col-xs-12">
+					<div class="price"><div class=""><div class="sale-discount"></div>
+                                 <div><span class="normal-price">$5.95</span>
+                                 <span class="special-price"></span></div></div></div>
+					<div class="stock">
+						<span class='out-of-stock'>OUT OF STOCK</span>					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- mobile view -->
+	<div class="row top-twenty visible-xs">
+		<div class="col-xs-12">
+							<a href="products/3005"
+				class="ec_click_product"
+				data-pid="3005"
+				data-name="Pibow Zero Case for Raspberry Pi Zero"
+				data-position="27"
+				data-listname="Product Listing (more info) category">
+					<div class="mobile-button-row">
+						<button class="blue-button-large">NOTIFY ME</button>
+					</div>
+				</a>
+						</div>
+	</div>
+
+
+<script>ga('ec:addImpression', {
+        'id': '3005',
+        'name': "P3005", 'position': '27' });
+ </script>
+	<hr />
+	<div class="row product-listing">
+		<div class="img-container col-lg-3 col-md-3 col-sm-3 col-xs-6">
+			<a href="/products/3003"
+			class="ec_click_product"
+			data-pid="3003"
+			data-name="C4Labs Zebra Zero for Raspberry Pi Zero"
+			data-position="29"
+			data-listname="Product Listing category">
+									<img class="img-responsive" src="https://cdn-shop.adafruit.com/310x233/3003-00.jpg" alt="C4Labs Zebra Zero for Raspberry Pi Zero" />
+							</a>
+		</div>
+		<div class="product-listing-right col-lg-9 col-md-9 col-sm-9 col-xs-6">
+			<div class="product-listing-text-wrapper">
+				<h1><a href="/products/3003"
+				class="ec_click_product"
+				data-pid="3003"
+				data-name="C4Labs Zebra Zero for Raspberry Pi Zero"
+				data-position="29"
+				data-listname="Product Listing category">
+				C4Labs Zebra Zero for Raspberry Pi Zero</a></h1>
+				<div class="product_id">PRODUCT ID: 3003</div>
+				<div class="product-description clearfix hidden-sm hidden-xs hidden-lg">
+					Wrap your new little Raspberry Pi Zero in protective and elegant wooden plates with the Zebra Zero ! A simple and versatile installation&nbsp;makes...				</div>
+				<div class="product-description clearfix hidden-sm hidden-xs hidden-md">
+					Wrap your new little Raspberry Pi Zero in protective and elegant wooden plates with the Zebra Zero ! A simple and versatile installation&nbsp;makes this case one of our favorites. The clever C4 nuts used to hold the case together can accept a screw from either end so if you want to install a PiHAT it can be secured to the nuts on the other side! A straight or right-angle GPIO header can be soldered in from either side of the board too. We also...				</div>
+			</div>
+			<div class="product-info clearfix row">
+				<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 hidden-xs">
+											<form action="added" method="post">
+							<input type="hidden" name="action" value="add_product" />
+							<input type="hidden" name="pid" value="3003" />
+							<input type="hidden" name="qty" value="1" />
+							<input type="hidden" name="source_page" value="category" />
+							<input type="hidden" name="source_id" value="813" />
+							<button type="submit"  class="blue-button-large" data-pid="3003" data-qty="1">ADD TO CART</button>
+						</form>
+										</div>
+				<div class="price-stock col-lg-8 col-md-6 col-sm-6 col-xs-12">
+					<div class="price"><div class=""><div class="sale-discount"></div>
+                                 <div><span class="normal-price">$6.95</span>
+                                 <span class="special-price"></span></div></div></div>
+					<div class="stock">
+						IN STOCK					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- mobile view -->
+	<div class="row top-twenty visible-xs">
+		<div class="col-xs-12">
+							<form action="added" method="post">
+					<input type="hidden" name="action" value="add_product" />
+					<input type="hidden" name="pid" value="3003" />
+					<input type="hidden" name="qty" value="1" />
+					<div class="mobile-button-row">
+					<button type="submit"  class="blue-button-large add_to_cart_ec"
+					data-pid="3003"
+					data-qty="1"
+					data-name=""
+					data-crumbs=""
+					>ADD TO CART</button>
+					</div>
+				</form>
+						</div>
+	</div>
+
+
+<script>ga('ec:addImpression', {
+        'id': '3003',
+        'name': "P3003", 'position': '29' });
+ </script>
+	<hr />
+	<div class="row product-listing">
+		<div class="img-container col-lg-3 col-md-3 col-sm-3 col-xs-6">
+			<a href="/products/3004"
+			class="ec_click_product"
+			data-pid="3004"
+			data-name="C4Labs Zebra Zero Plus for Raspberry Pi Zero"
+			data-position="31"
+			data-listname="Product Listing category">
+									<img class="img-responsive" src="https://cdn-shop.adafruit.com/310x233/3004-00.jpg" alt="C4Labs Zebra Zero Plus for Raspberry Pi Zero" />
+							</a>
+		</div>
+		<div class="product-listing-right col-lg-9 col-md-9 col-sm-9 col-xs-6">
+			<div class="product-listing-text-wrapper">
+				<h1><a href="/products/3004"
+				class="ec_click_product"
+				data-pid="3004"
+				data-name="C4Labs Zebra Zero Plus for Raspberry Pi Zero"
+				data-position="31"
+				data-listname="Product Listing category">
+				C4Labs Zebra Zero Plus for Raspberry Pi Zero</a></h1>
+				<div class="product_id">PRODUCT ID: 3004</div>
+				<div class="product-description clearfix hidden-sm hidden-xs hidden-lg">
+					Wrap your new little Raspberry Pi Zero in protective and elegant wooden plates with the Zebra Zero Plus ! The Zebra Zero Plus includes a breadboard...				</div>
+				<div class="product-description clearfix hidden-sm hidden-xs hidden-md">
+					Wrap your new little Raspberry Pi Zero in protective and elegant wooden plates with the Zebra Zero Plus ! The Zebra Zero Plus includes a breadboard for prototyping making this a nice and full-on prototyping platform for you and your Pi Zero. There's also a GPIO pin header reference chart etched on the back for reference. As is the case with all of our favorite enclosures, all of the pins on the Pi are easily accessible from the top! We also have...				</div>
+			</div>
+			<div class="product-info clearfix row">
+				<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 hidden-xs">
+											<form action="added" method="post">
+							<input type="hidden" name="action" value="add_product" />
+							<input type="hidden" name="pid" value="3004" />
+							<input type="hidden" name="qty" value="1" />
+							<input type="hidden" name="source_page" value="category" />
+							<input type="hidden" name="source_id" value="813" />
+							<button type="submit"  class="blue-button-large" data-pid="3004" data-qty="1">ADD TO CART</button>
+						</form>
+										</div>
+				<div class="price-stock col-lg-8 col-md-6 col-sm-6 col-xs-12">
+					<div class="price"><div class=""><div class="sale-discount"></div>
+                                 <div><span class="normal-price">$14.95</span>
+                                 <span class="special-price"></span></div></div></div>
+					<div class="stock">
+						IN STOCK					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- mobile view -->
+	<div class="row top-twenty visible-xs">
+		<div class="col-xs-12">
+							<form action="added" method="post">
+					<input type="hidden" name="action" value="add_product" />
+					<input type="hidden" name="pid" value="3004" />
+					<input type="hidden" name="qty" value="1" />
+					<div class="mobile-button-row">
+					<button type="submit"  class="blue-button-large add_to_cart_ec"
+					data-pid="3004"
+					data-qty="1"
+					data-name=""
+					data-crumbs=""
+					>ADD TO CART</button>
+					</div>
+				</form>
+						</div>
+	</div>
+
+
+
+	<hr />
+	<div class="row product-listing">
+		<div class="img-container col-lg-3 col-md-3 col-sm-3 col-xs-6">
+			<a href="/products/3018"
+			class="ec_click_product"
+			data-pid="3018"
+			data-name="Pimoroni Explorer pHAT for Raspberry Pi Zero"
+			data-position="33"
+			data-listname="Product Listing category">
+									<img class="img-responsive" src="https://cdn-shop.adafruit.com/310x233/3018-05.jpg" alt="Pimoroni Explorer pHAT for Raspberry Pi Zero" />
+							</a>
+		</div>
+		<div class="product-listing-right col-lg-9 col-md-9 col-sm-9 col-xs-6">
+			<div class="product-listing-text-wrapper">
+				<h1><a href="/products/3018"
+				class="ec_click_product"
+				data-pid="3018"
+				data-name="Pimoroni Explorer pHAT for Raspberry Pi Zero"
+				data-position="33"
+				data-listname="Product Listing category">
+				Pimoroni Explorer pHAT for Raspberry Pi Zero</a></h1>
+				<div class="product_id">PRODUCT ID: 3018</div>
+				<div class="product-description clearfix hidden-sm hidden-xs hidden-lg">
+					The Explorer pHAT is&nbsp;the perfect prototyping side-kick for your Raspberry Pi. Based on Pimoroni&#39;s popular&nbsp;Explorer Hat Pro,&nbsp;this...				</div>
+				<div class="product-description clearfix hidden-sm hidden-xs hidden-md">
+					The Explorer pHAT is&nbsp;the perfect prototyping side-kick for your Raspberry Pi. Based on Pimoroni&#39;s popular&nbsp;Explorer Hat Pro,&nbsp;this is a smaller cheaper version designed to fit perfectly on a Raspberry Pi Zero! A heap of useful input and output options have been added that will take your projects to the next level. Great for driving motors, using analog sensors, and interfacing with 5V sensors &amp; systems Though...				</div>
+			</div>
+			<div class="product-info clearfix row">
+				<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 hidden-xs">
+											<form action="added" method="post">
+							<input type="hidden" name="action" value="add_product" />
+							<input type="hidden" name="pid" value="3018" />
+							<input type="hidden" name="qty" value="1" />
+							<input type="hidden" name="source_page" value="category" />
+							<input type="hidden" name="source_id" value="813" />
+							<button type="submit"  class="blue-button-large" data-pid="3018" data-qty="1">ADD TO CART</button>
+						</form>
+										</div>
+				<div class="price-stock col-lg-8 col-md-6 col-sm-6 col-xs-12">
+					<div class="price"><div class=""><div class="sale-discount"></div>
+                                 <div><span class="normal-price">$12.50</span>
+                                 <span class="special-price"></span></div></div></div>
+					<div class="stock">
+						65 IN STOCK					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- mobile view -->
+	<div class="row top-twenty visible-xs">
+		<div class="col-xs-12">
+							<form action="added" method="post">
+					<input type="hidden" name="action" value="add_product" />
+					<input type="hidden" name="pid" value="3018" />
+					<input type="hidden" name="qty" value="1" />
+					<div class="mobile-button-row">
+					<button type="submit"  class="blue-button-large add_to_cart_ec"
+					data-pid="3018"
+					data-qty="1"
+					data-name=""
+					data-crumbs=""
+					>ADD TO CART</button>
+					</div>
+				</form>
+						</div>
+	</div>
+
+
+
+	<hr />
+	<div class="row product-listing">
+		<div class="img-container col-lg-3 col-md-3 col-sm-3 col-xs-6">
+			<a href="/products/3048"
+			class="ec_click_product"
+			data-pid="3048"
+			data-name="Mini HDMI to VGA Video Adapter with 3.5mm Stereo Cable"
+			data-position="35"
+			data-listname="Product Listing category">
+									<img class="img-responsive" src="https://cdn-shop.adafruit.com/310x233/3048-00.jpg" alt="Mini HDMI to VGA Video Adapter with 3.5mm Stereo Cable" />
+							</a>
+		</div>
+		<div class="product-listing-right col-lg-9 col-md-9 col-sm-9 col-xs-6">
+			<div class="product-listing-text-wrapper">
+				<h1><a href="/products/3048"
+				class="ec_click_product"
+				data-pid="3048"
+				data-name="Mini HDMI to VGA Video Adapter with 3.5mm Stereo Cable"
+				data-position="35"
+				data-listname="Product Listing category">
+				Mini HDMI to VGA Video Adapter with 3.5mm Stereo Cable</a></h1>
+				<div class="product_id">PRODUCT ID: 3048</div>
+				<div class="product-description clearfix hidden-sm hidden-xs hidden-lg">
+					If you have a computer or tablet or device with Mini HDMI output but you want to connect it to a projector, monitor or display with VGA input, you...				</div>
+				<div class="product-description clearfix hidden-sm hidden-xs hidden-md">
+					If you have a computer or tablet or device with Mini HDMI output but you want to connect it to a projector, monitor or display with VGA input, you have come to the right place! This nifty adapter cable has a Mini HDMI plug connector at one end and at the other end a DB-15 VGA connector (it has hex nuts that you can remove if you are trying to mate it with a cable that also has hex nuts). There&#39;s also an audio jack on the side, this provides...				</div>
+			</div>
+			<div class="product-info clearfix row">
+				<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 hidden-xs">
+											<form action="added" method="post">
+							<input type="hidden" name="action" value="add_product" />
+							<input type="hidden" name="pid" value="3048" />
+							<input type="hidden" name="qty" value="1" />
+							<input type="hidden" name="source_page" value="category" />
+							<input type="hidden" name="source_id" value="813" />
+							<button type="submit"  class="blue-button-large" data-pid="3048" data-qty="1">ADD TO CART</button>
+						</form>
+										</div>
+				<div class="price-stock col-lg-8 col-md-6 col-sm-6 col-xs-12">
+					<div class="price"><div class=""><div class="sale-discount"></div>
+                                 <div><span class="normal-price">$17.50</span>
+                                 <span class="special-price"></span></div></div></div>
+					<div class="stock">
+						61 IN STOCK					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- mobile view -->
+	<div class="row top-twenty visible-xs">
+		<div class="col-xs-12">
+							<form action="added" method="post">
+					<input type="hidden" name="action" value="add_product" />
+					<input type="hidden" name="pid" value="3048" />
+					<input type="hidden" name="qty" value="1" />
+					<div class="mobile-button-row">
+					<button type="submit"  class="blue-button-large add_to_cart_ec"
+					data-pid="3048"
+					data-qty="1"
+					data-name=""
+					data-crumbs=""
+					>ADD TO CART</button>
+					</div>
+				</form>
+						</div>
+	</div>
+
+
+
+	<hr />
+	<div class="row product-listing">
+		<div class="img-container col-lg-3 col-md-3 col-sm-3 col-xs-6">
+			<a href="/products/3017"
+			class="ec_click_product"
+			data-pid="3017"
+			data-name="Pimoroni Scroll pHAT - 11x5 LED Matrix for Raspberry Pi Zero"
+			data-position="37"
+			data-listname="Product Listing category">
+									<img class="img-responsive" src="https://cdn-shop.adafruit.com/310x233/3017-00.jpg" alt="Pimoroni Scroll pHAT - 11x5 LED Matrix for Raspberry Pi Zero" />
+							</a>
+		</div>
+		<div class="product-listing-right col-lg-9 col-md-9 col-sm-9 col-xs-6">
+			<div class="product-listing-text-wrapper">
+				<h1><a href="/products/3017"
+				class="ec_click_product"
+				data-pid="3017"
+				data-name="Pimoroni Scroll pHAT - 11x5 LED Matrix for Raspberry Pi Zero"
+				data-position="37"
+				data-listname="Product Listing category">
+				Pimoroni Scroll pHAT - 11x5 LED Matrix for Raspberry Pi Zero</a></h1>
+				<div class="product_id">PRODUCT ID: 3017</div>
+				<div class="product-description clearfix hidden-sm hidden-xs hidden-lg">
+					Let your Pi talk back with this slick little 11x5&nbsp;LED matrix Scroll pHAT ! The Scroll pHAT provides a matrix of 55 white LED pixels that is...				</div>
+				<div class="product-description clearfix hidden-sm hidden-xs hidden-md">
+					Let your Pi talk back with this slick little 11x5&nbsp;LED matrix Scroll pHAT ! The Scroll pHAT provides a matrix of 55 white LED pixels that is ideal for writing messages, showing graphs, and drawing pictures. Use it to output your IP address, show CPU usage, or just play very-low-rez pong! Though designed&nbsp;to match the format of the Raspberry Pi Zero it is compatible with all 40-pin GPIO Raspberry Pi variants (2/B+/A+). Features: 55 white...				</div>
+			</div>
+			<div class="product-info clearfix row">
+				<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 hidden-xs">
+											<form action="added" method="post">
+							<input type="hidden" name="action" value="add_product" />
+							<input type="hidden" name="pid" value="3017" />
+							<input type="hidden" name="qty" value="1" />
+							<input type="hidden" name="source_page" value="category" />
+							<input type="hidden" name="source_id" value="813" />
+							<button type="submit"  class="blue-button-large" data-pid="3017" data-qty="1">ADD TO CART</button>
+						</form>
+										</div>
+				<div class="price-stock col-lg-8 col-md-6 col-sm-6 col-xs-12">
+					<div class="price"><div class=""><div class="sale-discount"></div>
+                                 <div><span class="normal-price">$12.50</span>
+                                 <span class="special-price"></span></div></div></div>
+					<div class="stock">
+						IN STOCK					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- mobile view -->
+	<div class="row top-twenty visible-xs">
+		<div class="col-xs-12">
+							<form action="added" method="post">
+					<input type="hidden" name="action" value="add_product" />
+					<input type="hidden" name="pid" value="3017" />
+					<input type="hidden" name="qty" value="1" />
+					<div class="mobile-button-row">
+					<button type="submit"  class="blue-button-large add_to_cart_ec"
+					data-pid="3017"
+					data-qty="1"
+					data-name=""
+					data-crumbs=""
+					>ADD TO CART</button>
+					</div>
+				</form>
+						</div>
+	</div>
+
+
+
+	<hr />
+	<div class="row product-listing">
+		<div class="img-container col-lg-3 col-md-3 col-sm-3 col-xs-6">
+			<a href="/products/2820"
+			class="ec_click_product"
+			data-pid="2820"
+			data-name="4GB SD Card w/ Jessie Lite"
+			data-position="39"
+			data-listname="Product Listing category">
+									<img class="img-responsive" src="https://cdn-shop.adafruit.com/310x233/2820-00.jpg" alt="4GB SD Card w/ Jessie Lite" />
+							</a>
+		</div>
+		<div class="product-listing-right col-lg-9 col-md-9 col-sm-9 col-xs-6">
+			<div class="product-listing-text-wrapper">
+				<h1><a href="/products/2820"
+				class="ec_click_product"
+				data-pid="2820"
+				data-name="4GB SD Card w/ Jessie Lite"
+				data-position="39"
+				data-listname="Product Listing category">
+				4GB SD Card w/ Jessie Lite</a></h1>
+				<div class="product_id">PRODUCT ID: 2820</div>
+				<div class="product-description clearfix hidden-sm hidden-xs hidden-lg">
+					This is a 4GB microSDHC card (SDC44GB) that comes with a SD adapter and is pre-programmed to contain the latest Raspbian Jessie Lite - released in...				</div>
+				<div class="product-description clearfix hidden-sm hidden-xs hidden-md">
+					This is a 4GB microSDHC card (SDC44GB) that comes with a SD adapter and is pre-programmed to contain the latest Raspbian Jessie Lite - released in November of 2015. &nbsp; The cool thing about this version is that it works with your Pi Zero (as well as all Raspberry Pi's)! Raspbian is a free operating system based on Debian optimized for the Raspberry Pi hardware. An operating system is the set of basic programs and utilities that make your...				</div>
+			</div>
+			<div class="product-info clearfix row">
+				<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 hidden-xs">
+											<form action="added" method="post">
+							<input type="hidden" name="action" value="add_product" />
+							<input type="hidden" name="pid" value="2820" />
+							<input type="hidden" name="qty" value="1" />
+							<input type="hidden" name="source_page" value="category" />
+							<input type="hidden" name="source_id" value="813" />
+							<button type="submit"  class="blue-button-large" data-pid="2820" data-qty="1">ADD TO CART</button>
+						</form>
+										</div>
+				<div class="price-stock col-lg-8 col-md-6 col-sm-6 col-xs-12">
+					<div class="price"><div class=""><div class="sale-discount"></div>
+                                 <div><span class="normal-price">$9.95</span>
+                                 <span class="special-price"></span></div></div></div>
+					<div class="stock">
+						9 IN STOCK					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- mobile view -->
+	<div class="row top-twenty visible-xs">
+		<div class="col-xs-12">
+							<form action="added" method="post">
+					<input type="hidden" name="action" value="add_product" />
+					<input type="hidden" name="pid" value="2820" />
+					<input type="hidden" name="qty" value="1" />
+					<div class="mobile-button-row">
+					<button type="submit"  class="blue-button-large add_to_cart_ec"
+					data-pid="2820"
+					data-qty="1"
+					data-name=""
+					data-crumbs=""
+					>ADD TO CART</button>
+					</div>
+				</form>
+						</div>
+	</div>
+
+
+
+
+
+</div>
+
+
+
+
+
+</div>
+            </div>             <div id="footer">
+	<div class="container">
+        <div class="row">
+            <div class=" col-lg-6 col-md-6 col-sm-4 col-xs-12">
+              <ul id="footer-left">
+                 <li><a href="/contact_us">Contact</a></li>
+                 <li><a href="/support">Support</a></li>
+                 <li><a href="/distributors">Distributors</a></li>
+                 <li><a href="/educators">Educators</a></li>
+                 <li><a href="/jobs">Jobs</a></li>
+                 <li><a href="/faq">FAQ</a></li>
+                 <li><a href="/shippinginfo">Shipping &amp; Returns</a></li>
+                 <li><a href="/terms_of_service">Terms of Service</a></li>
+                 <li><a href="/privacy">PRIVACY &amp; LEGAL</a></li>
+                 <li><a href="/about">About Us</a></li>
+              </ul>
+              <div id="footer-copyright">
+                 <a href="http://nytm.org/made-in-nyc/">Engineered in NYC</a> <span>Adafruit&nbsp;&reg;</span>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-8 hidden-xs">
+
+                <div id="footer-quote"><span class="quotes-medium">"Don't worry about what anybody else is going to do… The best way to predict the future is to invent it. Really smart people with reasonable funding can do just about anything that doesn't violate too many of Newton's Laws!"<span class="quotes_author"> - <a href="http://www.smalltalk.org/alankay.html">Alan Kay</a></span></div>            <div id="footer-seals" class="hidden-xs">
+             <div class="authorize">
+                 <!-- (c) 2005, 2014. Authorize.Net is a registered trademark of CyberSource Corporation --> <div class="AuthorizeNetSeal"> <script type="text/javascript" language="javascript">var ANS_customer_id="1de2c247-f7e6-492b-99d8-fb648be79ff1";</script> <script type="text/javascript" language="javascript" src="//verify.authorize.net/anetseal/seal.js" ></script> <a href="http://www.authorize.net/" id="AuthorizeNetText" target="_blank">Online Payments</a> </div>
+             </div>
+             <div class="seals">
+                <img class="img-responsive" src="includes/templates/adafruit2013/images/seals_2x.jpg" />
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+</div>
+
+
+
+
+<!-- Google Code for Remarketing Tag -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1014834932;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1014834932/?value=0&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+    </div>
+ </div>
+
+ <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"308175db61","applicationID":"3835741","transactionName":"ZVxbZUFQWBdVW0BdWFwWekRARVkJG0hGW1NHWk1uX1hFEF1WUw==","queueTime":0,"applicationTime":73,"atts":"SRtYEwlKSxk=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>

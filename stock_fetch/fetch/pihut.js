@@ -17,16 +17,17 @@ module.exports = class Pihut {
         if(line.indexOf("product: {") >- 1) {
           let processLine = line.replace("product", "\"product\"").trim();
           processLine = "{" + processLine.substring(0,processLine.length-1) + "}";
+          
           let parsed = JSON.parse(processLine);
-
-          parsed.product.variants.forEach(function(variant) {
-            if(variant.inventory_quantity) {
-              let value = Number(variant.inventory_quantity);
-              if(value > 0) {
-                 totalAmount = value;
+          
+          if(parsed && parsed.product && parsed.product.variants) {
+            parsed.product.variants.forEach(function(variant) {
+              if(variant.inventory_quantity) {
+                let value = Number(variant.inventory_quantity);
+                totalAmount = (value > 0) ? value : 0;
               }
-            }
-          });
+            });
+          }
         }
       });
     } catch(e) {
@@ -40,7 +41,7 @@ module.exports = class Pihut {
     this.modules.request.get({url: collectionUrl, "User-Agent": "pi-check"}, (err, response, body) => {
       if(err) {
         console.error(err);
-        return done(err, false);
+        return done(err);
       }
 
       var found = this._process(response, body);

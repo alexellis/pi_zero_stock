@@ -2,13 +2,15 @@
 
 const Redis = require('redis');
 const request = require('request');
+const cheerio = require('cheerio');
 
 const Pihut = require("./fetch/pihut");
 const Pimoroni = require("./fetch/pimoroni");
 const Keywordfinder = require("./fetch/keywordfinder");
+const Adafruit = require('./fetch/adafruit');
 
 function main() {
-  const modules = {"request": request};
+  const modules = {"request": request, "cheerio": cheerio};
 
   const subscribe = Redis.createClient({host: process.env.REDIS||"redis"});
   const push = Redis.createClient({host: process.env.REDIS||"redis"});
@@ -16,6 +18,7 @@ function main() {
   const pihut = new Pihut(modules);
   const pimoroni = new Pimoroni(modules);
   const pisupply = new Keywordfinder(modules,"https://www.pi-supply.com/product/raspberry-pi-zero-cable-kit/");
+  const adafruit = new Adafruit(modules, ["2816", "2817", "2885"], "https://www.adafruit.com/categories/813");
 
   const cacheMs = 60000;
   const cacheRefreshLockMs = 5000;
@@ -25,7 +28,8 @@ function main() {
   var mappings = {
     "pihut": pihut,
     "pisupply": pisupply,
-    "pimoroni": pimoroni
+    "pimoroni": pimoroni,
+    "adafruit": adafruit
   };
 
   function getMapping(message) {
@@ -73,4 +77,3 @@ function main() {
 }
 
 main();
-

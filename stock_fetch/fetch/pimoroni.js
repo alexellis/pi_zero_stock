@@ -6,6 +6,7 @@ class PimoroniScrape {
   }
 
   _pullCounts(url) {
+
     return new Promise((resolve, reject) => {
       this.modules.request.get({url: url, "User-Agent": "pi-check", "json": true}, (err, response, body) => {
         let total = 0;
@@ -30,14 +31,26 @@ class PimoroniScrape {
   refresh(done) {
     var stock = {};
     var total = 0;
-    Promise.all([
-      this._pullCounts("https://shop.pimoroni.com/products/raspberry-pi-zero.js"),
-      this._pullCounts("https://shop.pimoroni.com/products/pi-zero-complete-starter-kit.js"),
-      this._pullCounts("https://shop.pimoroni.com/products/pi-zero-project-kits.js")
-    ]).then((results) => {
+    var urls = [
+      "https://shop.pimoroni.com/products/raspberry-pi-zero.js",
+      "https://shop.pimoroni.com/products/pi-zero-complete-starter-kit.js",
+      "https://shop.pimoroni.com/products/pi-zero-project-kits.js"
+    ];
+    var promises = [];
+    urls.forEach((url)=> {
+      promises.push(this._pullCounts(url));
+    });
+ 
+    Promise.all(promises)
+    .then((results) => {
+
       results.forEach((r)=> {
         total+=r;
       });
+      done(null, {stock: total>0, totalAmount: total});
+    })
+    .catch((e) => {
+      console.error(e);
       done(null, {stock: total>0, totalAmount: total});
     });
   }
