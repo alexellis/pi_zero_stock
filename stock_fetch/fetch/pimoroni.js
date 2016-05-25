@@ -40,7 +40,7 @@ class PimoroniScrape {
     urls.forEach((url)=> {
       promises.push(this._pullCounts(url));
     });
- 
+
     Promise.all(promises)
     .then((results) => {
 
