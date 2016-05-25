@@ -27,11 +27,17 @@ Set up a hosts entry in /etc/hosts for redis to localhost, or set the environmen
 
 #### Supported endpoints:
 
-I've implemented endpoints for the following UK stores:
+I've implemented endpoints for the following stores:
+
+UK-based
 
 * pimoroni
 * pihut
 * pisupply
+
+US-based
+
+* adafruit
 
 To extend the code and add a new endpoint look at the `stock_fetch` project and add a new file under the `fetch` folder. This also needs to be updated in the entrypoint of `stock_fetch`.
 
@@ -66,7 +72,7 @@ http://localhost:3000/
 [ ] Should have - Switch to pm2 for the node processes
 [x] Should have - coloured bootstrap wells or pills for in/out of stock.
 [ ] Could have - web hooks (posting to Twitter)
-[ ] Could have - show stock for other suppliers.
+[x] Could have - show stock for other suppliers. (adafruit)
 [ ] Could have - show stock units for individual SKUs, rather than (or in addition to) just one total-per-shop
 ```
 
