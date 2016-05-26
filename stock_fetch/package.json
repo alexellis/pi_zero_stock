@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test/*.js",
+    "test": "./node_modules/mocha/bin/_mocha test/*.js",
     "start": "node index.js"
   },
   "keywords": [],
@@ -13,6 +13,7 @@
   "dependencies": {
     "chai": "^3.5.0",
     "cheerio": "^0.20.0",
+    "mocha": "^2.5.3",
     "redis": "^2.6.0-2",
     "request": "^2.72.0",
     "sinon": "^1.17.4"
