@@ -36,7 +36,8 @@ class PimoroniScrape {
     var urls = [
       "https://shop.pimoroni.com/products/raspberry-pi-zero.js",
       "https://shop.pimoroni.com/products/pi-zero-complete-starter-kit.js",
-      "https://shop.pimoroni.com/products/pi-zero-project-kits.js"
+      "https://shop.pimoroni.com/products/pi-zero-project-kits.js",
+      "https://shop.pimoroni.com/products/pi-zero-cctv-kit-smol-bro.js"
     ];
     var promises = [];
     urls.forEach((url)=> {
