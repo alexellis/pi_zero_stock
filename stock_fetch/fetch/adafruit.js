@@ -7,18 +7,19 @@ class Adafruit {
     this.url = url;
   }
 
-  refresh(done) {
-    this.modules.request.get(this.url, (err,res,body)=> {
-      let $ = this.modules.cheerio.load(body);
-      let rows = $(".product-listing a");
+  _scrape($) {
+    let rows = $(".product-listing a");
 
-      let zeroProducts = this.zeroProducts;
-      let stock = false;
+    let zeroProducts = this.zeroProducts;
+    let stock = false;
+    if(rows) {
 
       rows.each((i, r)=> {
-        if(zeroProducts.indexOf(r.attribs["data-pid"]) > -1) {
+        if(r && r.attribs && r.attribs["data-pid"] && 
+          zeroProducts.indexOf(r.attribs["data-pid"]) > -1) {
+
           let isImageLink = false;
-          r.children.forEach((ch)=>{
+          r.children.forEach((ch) => {
             if(ch.type != "text") {
               isImageLink = true;
             }
@@ -27,13 +28,33 @@ class Adafruit {
           if(!isImageLink) {
             // console.log("PI Zero found - " + r.attribs['data-name'])
             // console.log(r.attribs["data-pid"]);
-            var available = $(r.parent.parent.parent).html().indexOf("out-of-stock") == -1;
-            if(available) {
-              stock = true;
+            if(r.parent && r.parent.parent && r.parent.parent.parent) {
+              var available = $(r.parent.parent.parent).html().indexOf("out-of-stock") == -1;
+              if(available) {
+                stock = true;
+              }
             }
           }
         }
       });
+    }
+
+    return stock;
+  }
+
+  refresh(done) {
+    this.modules.request.get(this.url, (err,res,body)=> {
+      let $ = null;
+      let stock = false;
+      try { 
+        $ = this.modules.cheerio.load(body);
+        if($) {
+          stock = this._scrape($);
+        }
+      }
+      catch (e) {
+        console.error(e);
+      }
 
       done(err, {stock:stock});
     });
