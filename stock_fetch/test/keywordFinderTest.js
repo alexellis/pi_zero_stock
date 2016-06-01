@@ -3,7 +3,7 @@
 const sinon = require('sinon');
 const expect = require('chai').expect;
 
-const KeywordFinder = require('../fetch/keywordFinder');
+const KeywordFinder = require('../fetch/keywordfinder');
 
 describe("keywordFinderTests", () => {
   var sandbox;
