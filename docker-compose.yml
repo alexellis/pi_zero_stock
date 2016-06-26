@@ -1,11 +1,16 @@
 version: "2.0"
 services:
+  redis:
+    image: redis
   web:
     build: ./web/
     ports:
      - "3000:3000"
+    depends_on: 
+      - redis
+      - stock_fetch
   stock_fetch:
     build: ./stock_fetch/
-  redis:
-    image: redis
+    depends_on: 
+      - redis
 

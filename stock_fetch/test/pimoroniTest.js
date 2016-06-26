@@ -31,15 +31,15 @@ describe("pimoroni scraper tests", () => {
 
   it("finds product quantity", (done) => {
 
-      let products1 = {"variants":[{"inventory_quantity": 1, price:1} ]};
-      let products2 = {"variants":[{"inventory_quantity": 1, price:1} ]};
-      let products3 = {"variants":[{"inventory_quantity": 1, price:1} ]};
+      let products1 = {"product": {"variants":[{"inventory_quantity": 1, price:1} ]}};
+      let products2 = {"product": {"variants":[{"inventory_quantity": 1, price:1} ]}};
+      let products3 = {"product": {"variants":[{"inventory_quantity": 1, price:1} ]}};
 
-      request.get.withArgs({url:"https://shop.pimoroni.com/products/raspberry-pi-zero.js", "User-Agent": "pi-check", "json": true})
+      request.get.withArgs({url:"https://shop.pimoroni.com/products/raspberry-pi-zero.json", "User-Agent": "pi-check", "json": true})
       .yields(null, {}, products1);
-      request.get.withArgs({url:"https://shop.pimoroni.com/products/pi-zero-complete-starter-kit.js", "User-Agent": "pi-check", "json": true})
+      request.get.withArgs({url:"https://shop.pimoroni.com/products/pi-zero-complete-starter-kit.json", "User-Agent": "pi-check", "json": true})
       .yields(null, {}, products2);
-      request.get.withArgs({url:"https://shop.pimoroni.com/products/pi-zero-project-kits.js", "User-Agent": "pi-check", "json": true})
+      request.get.withArgs({url:"https://shop.pimoroni.com/products/pi-zero-project-kits.json", "User-Agent": "pi-check", "json": true})
       .yields(null, {}, products3);
 
       let finder = new Pimoroni({request: request});

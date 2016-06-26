@@ -11,8 +11,8 @@ class PimoroniScrape {
       this.modules.request.get({url: url, "User-Agent": "pi-check", "json": true}, (err, response, body) => {
         let total = 0;
         try {
-          if(body && body.variants) {
-            body.variants.forEach((v) => {
+          if(body && body.product && body.product.variants) {
+            body.product.variants.forEach((v) => {
                if(v.inventory_quantity) {
                  let val = Number(v.inventory_quantity);
                  if(val > 0 && v.price > 0) {
@@ -34,9 +34,9 @@ class PimoroniScrape {
     var stock = {};
     var total = 0;
     var urls = [
-      "https://shop.pimoroni.com/products/raspberry-pi-zero.js",
-      "https://shop.pimoroni.com/products/pi-zero-complete-starter-kit.js",
-      "https://shop.pimoroni.com/products/pi-zero-project-kits.js",
+      "https://shop.pimoroni.com/products/raspberry-pi-zero.json",
+      "https://shop.pimoroni.com/products/pi-zero-complete-starter-kit.json",
+      "https://shop.pimoroni.com/products/pi-zero-project-kits.json",
       "https://shop.pimoroni.com/products/pi-zero-cctv-kit-little-bro.json"
     ];
     var promises = [];
