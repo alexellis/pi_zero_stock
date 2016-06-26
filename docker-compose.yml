@@ -6,6 +6,7 @@ services:
      - "3000:3000"
   stock_fetch:
     build: ./stock_fetch/
+    restart: always
   redis:
     image: redis
 
