@@ -43,17 +43,22 @@ class Adafruit {
   }
 
   refresh(done) {
-    this.modules.request.get(this.url, (err,res,body)=> {
-      let $ = null;
+    this.modules.request.get(this.url, (err, res, body) => { 
       let stock = false;
-      try { 
-        $ = this.modules.cheerio.load(body);
-        if($) {
-          stock = this._scrape($);
-        }
+      if(err) {
+        console.error(err);
       }
-      catch (e) {
-        console.error(e);
+
+      if(res.status==200) {
+        try { 
+          let $ = this.modules.cheerio.load(body);
+          if($) {
+            stock = this._scrape($);
+          }
+        }
+        catch (e) {
+          console.error(e);
+        }
       }
 
       done(err, {stock:stock});

@@ -90,7 +90,7 @@ describe("adafruitTests", () => {
 
       let html = require('fs').readFileSync("./test/adafruit_stock.html", "utf8");
 
-      request.get.yields(null, {}, html);
+      request.get.yields(null, {status:200}, html);
       let finder = new Adafruit({request: request,cheerio: cheerio}, ["2816", "2817", "2885"],  "http://webpage/");
 
       finder.refresh((err, stock) => {
