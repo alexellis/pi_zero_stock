@@ -33,7 +33,7 @@ UK-based
 
 * pimoroni
 * pihut
-* pisupply
+* ~~pisupply~~
 
 US-based
 
@@ -45,8 +45,8 @@ To extend the code and add a new endpoint look at the `stock_fetch` project and 
 
 ```
 curl http://localhost:3000/stock/pimoroni/
-curl http://localhost:3000/stock/pisupply/
 curl http://localhost:3000/stock/pihut/
+curl http://localhost:3000/stock/adafruit/
 ```
 
 * 200 is given if cache is valid and the stock will be returned as true or false.
