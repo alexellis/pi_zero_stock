@@ -3,8 +3,8 @@ services:
   influxdb:
     image: influxdb
     ports:
-     - "8086:8086"
-     - "8083:8083"
+     - "8087:8086"
+     - 8083/TCP
     environment:
      - INFLUXDB_USER=root
      - INFLUXDB_PASS=root
@@ -19,8 +19,9 @@ services:
      - "3001:3000"
     volumes:
       - "./grafana_lib:/var/lib/grafana"
-  # stats:
-  #   build: ./stat_pusher/
-  #   depends_on: 
-  #   - influxdb
+  stats:
+    build: ./stat_pusher/
+    depends_on: 
+    - influxdb
+
 

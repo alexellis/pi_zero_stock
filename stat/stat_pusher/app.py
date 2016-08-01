@@ -11,6 +11,7 @@ user = "root"
 password = "root"
 
 client = InfluxDBClient(host, port, user, password, dbname)
+client.create_database(dbname)
 
 def get_stock(endpoint):
     code = 0
