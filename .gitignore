@@ -3,3 +3,4 @@ out.json
 val.json
 stock_fetch/dump.rdb
 stock_fetch/npm-debug.log
+stats/grafana_lib/
