@@ -23,8 +23,9 @@ def get_stock(endpoint):
         print(str(code) + " "+ endpoint)
         if(code==200):
             res_json = r.json()
-            if(res_json["stock"] == True):
-                level = res_json["totalAmount"]
+            if("stock" in res_json and res_json["stock"] == True):
+                if("totalAmount" in res_json):
+                    level = res_json["totalAmount"]
             else:
                 level = 0
 
