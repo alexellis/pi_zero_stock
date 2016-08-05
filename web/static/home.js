@@ -18,11 +18,8 @@ var storeMappings = {
   "adafruit": "https://www.adafruit.com/categories/813"
 };
 
-//  "pisupply": "https://www.pi-supply.com/product/raspberry-pi-zero-cable-kit/"
-
 var runPromises = function() {
   var promises = [promiseMe("pimoroni"), promiseMe("pihut"), promiseMe("adafruit"),];
-//  var promises = [promiseMe("pimoroni"), promiseMe("pihut"), promiseMe("pisupply")];
   Promise.all(promises)
   .then(function(results) {
 
