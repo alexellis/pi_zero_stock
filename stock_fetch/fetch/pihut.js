@@ -8,7 +8,15 @@ class Pihut {
   _pullCounts(url) {
 
     return new Promise((resolve, reject) => {
-      this.modules.request.get({url: url, "User-Agent": "pi-check", "json": true}, (err, response, body) => {
+      let options = {
+        url: url,
+        headers: {          
+          "User-Agent": "stockalert.alexellis.io",
+        },
+        "json": true
+      };
+ 
+      this.modules.request.get(options, (err, response, body) => {
         let total = 0;
         try {
           if(body && body.variants) {
@@ -47,11 +55,11 @@ class Pihut {
       results.forEach((r)=> {
         total+=r;
       });
-      done(null, {stock: total>0, totalAmount: total});
+      done(null, {stock: total>0});
     })
     .catch((e) => {
       console.error(e);
-      done(null, {stock: total>0, totalAmount: total});
+      done(null, {stock: total>0});
     });
   }
 }

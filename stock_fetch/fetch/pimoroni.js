@@ -8,7 +8,16 @@ class PimoroniScrape {
   _pullCounts(url) {
 
     return new Promise((resolve, reject) => {
-      this.modules.request.get({url: url, "User-Agent": "pi-check", "json": true}, (err, response, body) => {
+      
+      let options = {
+        url: url,
+        headers: {          
+          "User-Agent": "stockalert.alexellis.io",
+        },
+        "json": true
+      }; 
+
+      this.modules.request.get(options, (err, response, body) => {
         let total = 0;
         try {
           if(body && body.product && body.product.variants) {

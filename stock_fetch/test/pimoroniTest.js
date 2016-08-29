@@ -29,18 +29,29 @@ describe("pimoroni scraper tests", () => {
       });
   });
 
+  function makeOptions(url) {
+    let options = {
+        url: url,
+        headers: {          
+          "User-Agent": "stockalert.alexellis.io",
+        },
+        "json": true
+      }; 
+      return options;
+  }
+
   it("finds product quantity", (done) => {
 
       let products1 = {"product": {"variants":[{"inventory_quantity": 1, price:1} ]}};
       let products2 = {"product": {"variants":[{"inventory_quantity": 1, price:1} ]}};
       let products3 = {"product": {"variants":[{"inventory_quantity": 1, price:1} ]}};
 
-      request.get.withArgs({url:"https://shop.pimoroni.com/products/raspberry-pi-zero.json", "User-Agent": "pi-check", "json": true})
-      .yields(null, {}, products1);
-      request.get.withArgs({url:"https://shop.pimoroni.com/products/pi-zero-complete-starter-kit.json", "User-Agent": "pi-check", "json": true})
-      .yields(null, {}, products2);
-      request.get.withArgs({url:"https://shop.pimoroni.com/products/pi-zero-project-kits.json", "User-Agent": "pi-check", "json": true})
-      .yields(null, {}, products3);
+      request.get.withArgs(makeOptions("https://shop.pimoroni.com/products/raspberry-pi-zero.json"))
+        .yields(null, {}, products1);
+      request.get.withArgs(makeOptions("https://shop.pimoroni.com/products/pi-zero-complete-starter-kit.json"))
+        .yields(null, {}, products2);
+      request.get.withArgs(makeOptions("https://shop.pimoroni.com/products/pi-zero-project-kits.json"))
+        .yields(null, {}, products3);
 
       let finder = new Pimoroni({request: request});
 
