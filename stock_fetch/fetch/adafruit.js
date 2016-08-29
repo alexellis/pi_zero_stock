@@ -13,7 +13,6 @@ class Adafruit {
     let zeroProducts = this.zeroProducts;
     let stock = false;
     if(rows) {
-
       rows.each((i, r)=> {
         if(r && r.attribs && r.attribs["data-pid"] && 
           zeroProducts.indexOf(r.attribs["data-pid"]) > -1) {
@@ -43,13 +42,20 @@ class Adafruit {
   }
 
   refresh(done) {
-    this.modules.request.get(this.url, (err, res, body) => { 
+
+    let options = {
+      url: this.url,
+      headers: {
+        'User-Agent': 'stockalert.alexellis.io'
+      }
+    };
+
+    this.modules.request.get(options, (err, res, body) => { 
       let stock = false;
       if(err) {
         console.error(err);
       }
-
-      if(res.status==200) {
+      if(res.statusCode == 200) {
         try { 
           let $ = this.modules.cheerio.load(body);
           if($) {

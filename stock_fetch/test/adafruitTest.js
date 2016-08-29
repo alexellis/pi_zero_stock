@@ -12,7 +12,7 @@ describe("adafruitTests", () => {
     sandbox = sinon.sandbox.create();
     request = { get: sinon.stub() };
   });
-  
+
   it("has badly formed HTML -> no rows", (done) => {
       var fakecheerio = {
         load : sinon.stub()
@@ -75,7 +75,7 @@ describe("adafruitTests", () => {
 
       fakecheerio.load.returns(fakeDoc);
       request.get.yields(null, {}, "<html></html>");
-      let finder = new Adafruit({request: request,cheerio: fakecheerio}, ["2816", "2817", "2885"],  "http://webpage/");
+      let finder = new Adafruit({request: request, cheerio: fakecheerio}, ["2816", "2817", "2885"],  "http://webpage/");
 
       finder.refresh((err, stock) => {
         expect(err).not.to.exist;
@@ -87,11 +87,10 @@ describe("adafruitTests", () => {
   });
 
   it("finds product stock", (done) => {
-
       let html = require('fs').readFileSync("./test/adafruit_stock.html", "utf8");
 
-      request.get.yields(null, {status:200}, html);
-      let finder = new Adafruit({request: request,cheerio: cheerio}, ["2816", "2817", "2885"],  "http://webpage/");
+      request.get.yields(null, {statusCode:200}, html);
+      let finder = new Adafruit({request: request, cheerio: cheerio}, ["2816", "2817", "2885"],  "http://webpage/");
 
       finder.refresh((err, stock) => {
         expect(err).not.to.exist;

@@ -12,12 +12,11 @@ const Adafruit = require('./fetch/adafruit');
 function main() {
   const modules = {"request": request, "cheerio": cheerio};
 
-  const subscribe = Redis.createClient({host: process.env.REDIS||"redis"});
-  const push = Redis.createClient({host: process.env.REDIS||"redis"});
+  const subscribe = Redis.createClient({host: process.env.REDIS || "redis"});
+  const push = Redis.createClient({host: process.env.REDIS || "redis"});
 
   const pihut = new Pihut(modules);
   const pimoroni = new Pimoroni(modules);
-  const pisupply = new Keywordfinder(modules,"https://www.pi-supply.com/product/raspberry-pi-zero-cable-kit/");
   const adafruit = new Adafruit(modules, ["2816", "2817", "2885"], "https://www.adafruit.com/categories/813");
 
   const cacheMs = 60000;
@@ -27,7 +26,6 @@ function main() {
 
   var mappings = {
     "pihut": pihut,
-    "pisupply": pisupply,
     "pimoroni": pimoroni,
     "adafruit": adafruit
   };
@@ -56,6 +54,9 @@ function main() {
               console.log("Firing check to " + message);
               push.set(message + ".stock.fetching", true, ifNotExists, expire, cacheRefreshLockMs, (setFetchingErr) => {
                 handler.refresh((refreshErr, val) => {
+                  if(refreshErr) {
+                    console.error(refreshErr);
+                  }
                   console.log(message+ " refreshed");
                   push.set(message+".stock", (val.stock ? 1 : 0), ifNotExists, expire, cacheMs, (err) => {
                     if(val.totalAmount) {
