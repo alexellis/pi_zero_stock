@@ -48,9 +48,9 @@ describe("pihut scraper tests", () => {
         expect(err).not.to.exist;
         expect(stock).to.exist;
         expect(stock.stock).to.equal(true);
-
-        // expect(stock.totalAmount).to.exist;
+        expect(stock.totalAmount).to.exist;
         expect(stock.totalAmount).to.equal(301);
+
         done();
       });
   });
