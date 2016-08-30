@@ -3,6 +3,7 @@
 class Pihut {
   constructor(modules) {
     this.modules = modules;
+    this.baseProductId = 14062715972;
   }
 
   _pullCounts(url) {
@@ -13,7 +14,7 @@ class Pihut {
         try {
           if(body && body.variants) {
             body.variants.forEach((v) => {
-               if(v.inventory_quantity) {
+               if(v.id == this.baseProductId && v.inventory_quantity) {
                  let val = Number(v.inventory_quantity);
                  if(val > 0 && v.price > 0) {
                     total += val;
