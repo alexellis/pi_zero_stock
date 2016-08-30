@@ -31,7 +31,7 @@ describe("pihut scraper tests", () => {
 
   it("finds product quantity", (done) => {
 
-      let products1 = {"variants":[{"inventory_quantity": 301,price:30} ]};
+      let products1 = {"variants":[{"id": 14062715972 ,"inventory_quantity": 301,price:30} ]};
       let options = {
         url: "https://thepihut.com/products/raspberry-pi-zero.js",
         headers: {          
@@ -48,8 +48,9 @@ describe("pihut scraper tests", () => {
         expect(err).not.to.exist;
         expect(stock).to.exist;
         expect(stock.stock).to.equal(true);
-        // expect(stock.totalAmount).to.equal(301);
-        expect(stock.totalAmount).to.not.exist;
+        expect(stock.totalAmount).to.exist;
+        expect(stock.totalAmount).to.equal(301);
+
         done();
       });
   });
