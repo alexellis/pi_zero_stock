@@ -18,6 +18,12 @@ var storeMappings = {
   "adafruit": "https://www.adafruit.com/categories/813"
 };
 
+var nameMappings = {
+  "pimoroni": "Pimoroni",
+  "adafruit": "Adafruit",
+  "pihut": "ThePiHut"
+};
+
 var runPromises = function() {
   var promises = [promiseMe("pimoroni"), promiseMe("pihut"), promiseMe("adafruit"),];
   Promise.all(promises)
@@ -26,7 +32,7 @@ var runPromises = function() {
     var values = "";
     results.forEach(function(v) {
       if(!v.status) {
-        values+="<li class=\"list-group-item list-group-item-warning\"> Refreshing "+v.name+"</li>\n";
+        values+="<li class=\"list-group-item list-group-item-warning\"> Refreshing " + nameMappings[v.name] + "</li>\n";
       } else {
         var classes = "list-group-item";
         if(v.status.stock) {
@@ -36,7 +42,7 @@ var runPromises = function() {
         }
 
         var newli = "<li class=\""+classes+"\"> <b>";
-        newli += "<a href=\"" + storeMappings[v.name] + "\" target=\"_blank\">"+v.name+"</a>";
+        newli += "<a href=\"" + storeMappings[v.name] + "\" target=\"_blank\">" + nameMappings[v.name] + "</a>";
         newli += "</b> "+ (v.status.stock ? "in stock" : "out of stock")+"\n";
         if(v.status.totalAmount) {
            newli += " <span class=\"badge\">" + v.status.totalAmount + " units</span>";
