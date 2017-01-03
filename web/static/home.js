@@ -1,5 +1,5 @@
 function promiseMe(name) {
-  var load = new Promise(function(resolve, reject) {
+  var load = new RSVP.Promise(function(resolve, reject) {
     $.ajax("/stock/"+name).success(function(status, val, res) {
       if(res.status == 202) {
         resolve({name: name , status: null});
@@ -26,7 +26,7 @@ var nameMappings = {
 
 var runPromises = function() {
   var promises = [promiseMe("pimoroni"), promiseMe("pihut"), promiseMe("adafruit"),];
-  Promise.all(promises)
+  RSVP.all(promises)
   .then(function(results) {
 
     var values = "";
