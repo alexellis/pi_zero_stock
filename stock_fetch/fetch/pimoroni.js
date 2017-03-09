@@ -46,7 +46,8 @@ class PimoroniScrape {
       "https://shop.pimoroni.com/products/raspberry-pi-zero.json",
       "https://shop.pimoroni.com/products/pi-zero-complete-starter-kit.json",
       "https://shop.pimoroni.com/products/pi-zero-project-kits.json",
-      "https://shop.pimoroni.com/products/pi-zero-cctv-kit-little-bro.json"
+      "https://shop.pimoroni.com/products/pi-zero-cctv-kit-little-bro.json",
+      "https://shop.pimoroni.com/collections/raspberry-pi/products/raspberry-pi-zero-w"
     ];
     var promises = [];
     urls.forEach((url)=> {
