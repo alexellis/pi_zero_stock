@@ -17,7 +17,7 @@ function main() {
 
   const pihut = new Pihut(modules);
   const pimoroni = new Pimoroni(modules);
-  const adafruit = new Adafruit(modules, ["2816", "2817", "2885"], "https://www.adafruit.com/categories/813");
+  const adafruit = new Adafruit(modules, ["2816", "2817", "2885", "3409", "3411", "3410", "3412", "3170", "3414", "3171", "3415", "3446"], "https://www.adafruit.com/categories/813");
 
   const cacheMs = 60000;
   const cacheRefreshLockMs = 5000;
